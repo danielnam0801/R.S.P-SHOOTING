@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    private StageData stageData;
-    private Movement movement;
+    //[SerializeField]
+    //private StageData stageData;
+    //private Movement movement;
     public GameObject[] weapons;
     Weapon equipWeapon;
-    int equipWeaponIndex = -1;
+    //int equipWeaponIndex = -1;
     bool sDown1;
     bool sDown2;
     bool sDown3;
@@ -18,13 +18,12 @@ public class Player : MonoBehaviour
 
     float fireDelay;
 
-    private void Awake()
-    {
-        movement = GetComponent<Movement>();
-    }
+    //private void Awake()
+    //{
+    //    movement = GetComponent<Movement>();
+    //}
     void Update()
     {
-        Move();
         Swap();
         Attack();
         GetInput();
@@ -71,19 +70,19 @@ public class Player : MonoBehaviour
         fireDelay = 0;
     }
 
-    void Move()
-    {
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
+    //void Move()
+    //{
+    //    float x = Input.GetAxisRaw("Horizontal");
+    //    float y = Input.GetAxisRaw("Vertical");
 
-        movement.MoveTo(new Vector3 (x, y, 0));
-    }
+    //    movement.MoveTo(new Vector3 (x, y, 0));
+    //}
 
     
 
-    private void LateUpdate()
-    {
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, stageData.LimitMin.x, stageData.LimitMax.x),
-                                         Mathf.Clamp(transform.position.y, stageData.LimitMin.y, stageData.LimitMax.y));   
-    }
+    //private void LateUpdate()
+    //{
+    //    transform.position = new Vector3(Mathf.Clamp(transform.position.x, stageData.LimitMin.x, stageData.LimitMax.x),
+    //                                     Mathf.Clamp(transform.position.y, stageData.LimitMin.y, stageData.LimitMax.y));   
+    //}
 }

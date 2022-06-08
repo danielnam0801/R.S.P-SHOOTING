@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public int damage;
+    public int damage = 1;
+    private Vector3 direction;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Shoot(Vector3 dir)
     {
-        if (collision.CompareTag("Square")){
-            Destroy(gameObject);
-        }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        direction = dir;
+        direction.Normalize();
+        Debug.Log($"{direction.x} {direction.y}");
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        transform.position += direction * 14 * Time.deltaTime; 
     }
+
+    //void OnHit()
+    //{
+        
+    //}
 }

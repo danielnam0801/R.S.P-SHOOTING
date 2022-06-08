@@ -6,9 +6,12 @@ TagManager:
   tags:
   - Square
   - Weapon
-  - Rock
-  - Scissor
-  - Paper
+  - REnemy
+  - SEnemy
+  - PEnemy
+  - RBullet
+  - SBullet
+  - PBullet
   layers:
   - Default
   - TransparentFX

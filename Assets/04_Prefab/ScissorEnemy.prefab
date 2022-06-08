@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2961638628047976013}
   - component: {fileID: 1980044976644143274}
-  - component: {fileID: -4028547241346132533}
   - component: {fileID: -4956739553724039142}
   - component: {fileID: 138424905253822326}
+  - component: {fileID: 8797193202608673343}
   m_Layer: 0
   m_Name: ScissorEnemy
-  m_TagString: Untagged
+  m_TagString: SEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.9519477, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -85,20 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-4028547241346132533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4428701259928942886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37bb54b1c8e6a224481792c0aaf4dc49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 5
-  dir: {x: 0, y: -1, z: 0}
 --- !u!50 &-4956739553724039142
 Rigidbody2D:
   serializedVersion: 4
@@ -146,3 +132,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8797193202608673343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4428701259928942886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b9b3a695714f34e9ee93d8e01fd1a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  speed: 3
+  sprites: []

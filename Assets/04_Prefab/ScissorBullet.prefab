@@ -10,13 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8363667740223425402}
   - component: {fileID: 7950470961896447504}
-  - component: {fileID: 8342672609949921280}
   - component: {fileID: -1501111526322984752}
   - component: {fileID: 8930410918297178517}
   - component: {fileID: 5803732730398576071}
   m_Layer: 0
   m_Name: ScissorBullet
-  m_TagString: Scissor
+  m_TagString: SBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8483380154467873319}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1776415, y: -1.268506, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -86,20 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8342672609949921280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8483380154467873319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37bb54b1c8e6a224481792c0aaf4dc49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 8
-  dir: {x: 0, y: 1, z: 0}
 --- !u!50 &-1501111526322984752
 Rigidbody2D:
   serializedVersion: 4
@@ -159,4 +144,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b9786e552cfbb419b6f8062c4936fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 1

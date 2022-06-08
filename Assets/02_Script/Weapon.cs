@@ -6,17 +6,31 @@ public class Weapon : MonoBehaviour
 {
     public enum Type {rockBullet, scissorBullet, paperBullet};
     public Type type;
-    public int damage;
     public float rate;
     public GameObject rock;
     public GameObject scissor;
     public GameObject paper;
-    //public Transform firePosition;
+    public float bulletSpeed = 5f;
+    //ObjectPooler bulletPooler;
+    GameObject bulletFactory;
+    public Transform firePosition;
+    Vector3 dir;
+    Camera cam;
 
-
+    private void Awake()
+    {
+        cam = Camera.main;
+        //bulletPooler = GetComponent<ObjectPooler>();
+        
+    }
+    private void Update()
+    {
+        dir = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -cam.transform.position.z));
+        dir = dir - transform.position;
+    }
     public void Use()
     {
-        //GameObject bulletFactory = Instantiate(bullet, firePosition.transform.position, Quaternion.identity);
+        
         if (type == Type.rockBullet)
         {
             StopCoroutine("RockSpawn");
@@ -36,19 +50,24 @@ public class Weapon : MonoBehaviour
 
     IEnumerator RockSpawn()
     {
-        GameObject bulletFactory = Instantiate(rock, transform.position, Quaternion.identity);
+        
+        bulletFactory = Instantiate(rock, firePosition.transform.position, Quaternion.identity);
+        //bulletFactory = bulletPooler.SpawnObject(transform.position, Quaternion.identity);
+        bulletFactory.gameObject.GetComponent<Bullet>().Shoot(dir);
         yield return new WaitForSeconds(rate);
     }
 
     IEnumerator ScissorSpawn()
     {
-        GameObject bulletFactory = Instantiate(scissor, transform.position, Quaternion.identity);
+        bulletFactory = Instantiate(scissor, firePosition.transform.position, Quaternion.identity);
+        bulletFactory.gameObject.GetComponent<Bullet>().Shoot(dir);
         yield return new WaitForSeconds(rate);
     }
 
     IEnumerator PaperSpawn()
     {
-        GameObject bulletFactory = Instantiate(paper, transform.position, Quaternion.identity);
+        bulletFactory = Instantiate(paper, firePosition.transform.position, Quaternion.identity);
+        bulletFactory.gameObject.GetComponent<Bullet>().Shoot(dir);
         yield return new WaitForSeconds(rate);
     }
 }
