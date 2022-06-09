@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5314530021800399953}
   - component: {fileID: 6810877496446279418}
   - component: {fileID: -5481771543331587535}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: RockEnemy
   m_TagString: REnemy
   m_Icon: {fileID: 0}
@@ -147,3 +147,4 @@ MonoBehaviour:
   health: 3
   speed: 3
   sprites: []
+  target: {fileID: 0}

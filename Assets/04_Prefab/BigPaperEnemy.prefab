@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4502406918297596639}
   - component: {fileID: 1344441936151229030}
   m_Layer: 13
-  m_Name: PaperEnemy
+  m_Name: BigPaperEnemy
   m_TagString: PEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3530177816923405542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -147,4 +147,3 @@ MonoBehaviour:
   health: 3
   speed: 3
   sprites: []
-  target: {fileID: 0}

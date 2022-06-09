@@ -31,7 +31,7 @@ public class PlayerAction : MonoBehaviour
         bool vDown = Input.GetButtonDown("Vertical");
         bool hUp = Input.GetButtonUp("Horizontal");
         bool vUp = Input.GetButtonUp("Vertical");
-
+        
         if (hDown)
             isHorizonMove = true;
         else if (vDown)

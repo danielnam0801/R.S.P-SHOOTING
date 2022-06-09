@@ -15,8 +15,11 @@ public class Player : MonoBehaviour
     bool sDown3;
     bool fireDown;
     bool isFireReady = true;
+    bool isDamage;
 
     float fireDelay;
+
+    public int health = 5;
 
     //private void Awake()
     //{
@@ -70,6 +73,22 @@ public class Player : MonoBehaviour
         fireDelay = 0;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "EnemyBullet")
+        {
+            Bullet enemyBullet = collision.GetComponent<Bullet>();
+            health -= enemyBullet.damage;
+            StartCoroutine(OnDamage());
+        }
+    }
+
+    IEnumerator OnDamage()
+    {
+        isDamage = true;
+        yield return null;
+    }
+
     //void Move()
     //{
     //    float x = Input.GetAxisRaw("Horizontal");
@@ -78,7 +97,7 @@ public class Player : MonoBehaviour
     //    movement.MoveTo(new Vector3 (x, y, 0));
     //}
 
-    
+
 
     //private void LateUpdate()
     //{

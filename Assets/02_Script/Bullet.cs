@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public int damage = 1;
     private Vector3 direction;
+    private float speed = 12f;
 
     public void Shoot(Vector3 dir)
     {
@@ -16,7 +17,7 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        transform.position += direction * 14 * Time.deltaTime; 
+        transform.position += direction * speed * Time.deltaTime; 
     }
 
     //void OnHit()
