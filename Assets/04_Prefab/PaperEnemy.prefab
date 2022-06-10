@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -8510243868229842235}
   - component: {fileID: 4502406918297596639}
   - component: {fileID: 1344441936151229030}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: PaperEnemy
   m_TagString: PEnemy
   m_Icon: {fileID: 0}
@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  speed: 3
+  nSpeed: 0
+  sSpeed: 0
   sprites: []
-  target: {fileID: 0}
+  bullet: {fileID: 0}

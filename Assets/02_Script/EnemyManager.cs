@@ -6,52 +6,71 @@ public class EnemyManager : MonoBehaviour
 { 
     [SerializeField]
     GameObject[] enemies;
-    [SerializeField]
-    public Transform[] spawnPoints;
+    //[SerializeField]
+    //public Transform[] spawnPoints;
     public float maxSpawnTime;
     public float curSpawnTime;
+    bool active;
+    GameObject player;
+    Vector3 degree;
 
 
     // Start is called before the first frame update
-    void Start()
+    void Start()    
     {
-        
+        player = GameObject.Find("Player");
+        gameObject.SetActive(false);
+        active = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        curSpawnTime += Time.deltaTime;
-        
-        if(curSpawnTime > maxSpawnTime)
+        degree = player.transform.position - transform.position;
+        if (degree.magnitude<= 15)
         {
-            SpawnEnemy();
-            maxSpawnTime = Random.Range(0.5f, 3f);
-            curSpawnTime = 0;
+            active = true;
+            gameObject.SetActive(true);
+            
         }
+        else
+        {
+            active = false;
+            gameObject.SetActive(false);
+        }
+
+        if(active == true)
+        {
+            curSpawnTime += Time.deltaTime;
+            if(curSpawnTime > maxSpawnTime)
+            {
+                SpawnEnemy();
+                maxSpawnTime = Random.Range(0.5f, 3f);
+                curSpawnTime = 0;
+            }
+        }
+        
     }
 
     void SpawnEnemy()
     {
-        int ranEnemy = Random.Range(0 , 3);
-        int ranPoint = Random.Range(0 , 9);
-        GameObject enemy = Instantiate(enemies[ranEnemy] , spawnPoints[ranPoint].position  , spawnPoints[ranPoint].rotation);
-        Rigidbody2D rigid = enemy.GetComponent<Rigidbody2D>();
-        Enemy enemyLogic = enemy.GetComponent<Enemy>();
+        int normalEnemy = Random.Range(0, 3);
+        int gunEnemy = Random.Range(0, 3);
+        int specialEnemy = Random.Range(0, 3);
+        int spawnPercent = Random.Range(0, 100);
 
-        if(ranPoint == 5 || ranPoint == 6)
+        if(spawnPercent <= 60)
         {
-            enemy.transform.Rotate(Vector3.back * 90);
-            rigid.velocity = new Vector2(enemyLogic.speed * (-1), -1);
+            GameObject enemy = Instantiate(enemies[normalEnemy], transform.position, Quaternion.identity);
         }
-        else if(ranPoint == 7 || ranPoint == 8)
+        else if(spawnPercent < 90)
         {
-            enemy.transform.Rotate(Vector3.forward * 90);
-            rigid.velocity = new Vector2(enemyLogic.speed, -1);
+            GameObject enemy = Instantiate(enemies[gunEnemy], transform.position, Quaternion.identity);
         }
         else
         {
-            rigid.velocity = new Vector2(0, enemyLogic.speed*(-1));
+            GameObject enemy = Instantiate(enemies[specialEnemy], transform.position, Quaternion.identity);
         }
+        
     }
 }

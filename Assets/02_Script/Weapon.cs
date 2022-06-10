@@ -16,11 +16,12 @@ public class Weapon : MonoBehaviour
     public Transform firePosition;
     Vector3 dir;
     Camera cam;
+    //ObjectPooler_Advance objectPooler;
 
     private void Awake()
     {
         cam = Camera.main;
-        //bulletPooler = GetComponent<ObjectPooler>();
+        //objectPooler = FindObjectOfType<ObjectPooler_Advance>();
         
     }
     private void Update()
@@ -50,9 +51,11 @@ public class Weapon : MonoBehaviour
 
     IEnumerator RockSpawn()
     {
+        //GameObject obj = objectPooler.GetObject(rock);
+        //obj.transform.position = transform.position;
+        //obj.transform.rotation = transform.rotation;
         
         bulletFactory = Instantiate(rock, firePosition.transform.position, Quaternion.identity);
-        //bulletFactory = bulletPooler.SpawnObject(transform.position, Quaternion.identity);
         bulletFactory.gameObject.GetComponent<Bullet>().Shoot(dir);
         yield return new WaitForSeconds(rate);
     }

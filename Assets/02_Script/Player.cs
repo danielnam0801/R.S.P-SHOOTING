@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     //private Movement movement;
     public GameObject[] weapons;
     Weapon equipWeapon;
+    SpriteRenderer spriteRenderer;
     //int equipWeaponIndex = -1;
     bool sDown1;
     bool sDown2;
@@ -77,17 +78,24 @@ public class Player : MonoBehaviour
     {
         if (collision.tag == "EnemyBullet")
         {
-            Bullet enemyBullet = collision.GetComponent<Bullet>();
-            health -= enemyBullet.damage;
-            StartCoroutine(OnDamage());
+            {
+               
+                Bullet enemyBullet = collision.GetComponent<Bullet>();
+                health -= enemyBullet.damage;
+                //StartCoroutine(OnDamage());
+                
+            }
+
         }
     }
 
-    IEnumerator OnDamage()
-    {
-        isDamage = true;
-        yield return null;
-    }
+    //IEnumerator OnDamage()
+    //{
+    //    isDamage = true;
+    //    yield return new WaitForSeconds(1f);
+
+    //    isDamage = false;
+    //}
 
     //void Move()
     //{

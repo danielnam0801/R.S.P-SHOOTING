@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+
 
 public class Enemy : MonoBehaviour
 {
     public int health;
-    public int speed;
+    public float nSpeed;
+    public float sSpeed;
+   
     public Sprite[] sprites;
+    public GameObject bullet;
     Rigidbody2D rb;
     //SpriteRenderer spriteRenderer;
     Transform targetTrm;
@@ -25,15 +28,19 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        Vector3 degree = targetTrm.position - transform.position;
-        if (degree.magnitude >= 1)
+        if(gameObject.tag == "NormalEnemy")
         {
-            rb.velocity = degree.normalized * speed;
+            NearEnemyMove();
         }
-        else
+        if(gameObject.tag == "SpecialEnemy")
         {
-            rb.velocity = Vector3.zero;
+            SpecialEnemyMove();
         }
+        if(gameObject.tag == "GunEnemy")
+        {
+            GunEnemyMove();
+        }
+       
     }
     void OnHit(int dmg)
     {
@@ -51,6 +58,47 @@ public class Enemy : MonoBehaviour
     {
        // spriteRenderer.sprite = sprites[0];
     }
+
+    void NearEnemyMove()
+    {
+        Vector3 degree = targetTrm.position - transform.position;
+        if (degree.magnitude >= 1)
+        {
+            rb.velocity = degree.normalized * nSpeed;
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
+    }
+
+    void GunEnemyMove()
+    {
+        Vector3 degree = targetTrm.position - transform.position;
+        if (degree.magnitude >= 6)
+        {
+            rb.velocity = degree.normalized * nSpeed;
+        }
+        else
+        {
+            //GameObject enemyBullet = 
+            rb.velocity = Vector3.zero;
+        }
+    }
+    void SpecialEnemyMove()
+    {
+        Vector3 degree = targetTrm.position - transform.position;
+        if (degree.magnitude >= 1)
+        {
+            rb.velocity = degree.normalized * sSpeed;
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
+    }
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

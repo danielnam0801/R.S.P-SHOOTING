@@ -12,6 +12,7 @@ TagManager:
   - RBullet
   - SBullet
   - PBullet
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
@@ -26,9 +27,9 @@ TagManager:
   - 
   - 
   - 
-  - Enemy
-  - 
-  - 
+  - SpecialEnemy
+  - NormalEnemy
+  - GunEnemy
   - 
   - 
   - 

@@ -30,4 +30,19 @@ public class ObjectPooler_Advance : MonoBehaviour
         newObject.name = gameObject.name;
         return newObject;
     }
+
+    public void ReturnObject(GameObject gameObject)
+    {
+        gameObject.SetActive(false);
+        if(objectPool.TryGetValue((gameObject.name), out Queue<GameObject> objectList))
+        {
+            objectList.Enqueue(gameObject);
+        }
+        else
+        {
+            Queue<GameObject> newObjectQueue = new Queue<GameObject>();
+            newObjectQueue.Enqueue(gameObject);
+            objectPool.Add(gameObject.name, newObjectQueue);
+        }
+    }
 }

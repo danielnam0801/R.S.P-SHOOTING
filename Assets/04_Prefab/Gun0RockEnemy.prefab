@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5314530021800399953}
   - component: {fileID: 6810877496446279418}
   - component: {fileID: -5481771543331587535}
-  m_Layer: 14
-  m_Name: RockEnemy
+  m_Layer: 15
+  m_Name: Gun0RockEnemy
   m_TagString: REnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6631179875318413031}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
