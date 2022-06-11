@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAction : MonoBehaviour
 {
     [SerializeField]
-    float speed = 5f;
+    float speed = 3f;
     float h;
     float v;
     bool isHorizonMove;

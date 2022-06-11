@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4fff311405d4d94095988254ae6fd58, type: 3}
-  m_Name: StageData
+  m_Script: {fileID: 11500000, guid: 0e46cbd8cff21a448894768a9970c7ae, type: 3}
+  m_Name: New Stage Data
   m_EditorClassIdentifier: 
-  limitMin: {x: -2.6, y: -4.6}
-  limitMax: {x: 2.6, y: 4.6}
+  limitMin: {x: -30, y: -30}
+  limitMax: {x: 30, y: 30}

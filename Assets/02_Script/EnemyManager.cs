@@ -8,18 +8,17 @@ public class EnemyManager : MonoBehaviour
     GameObject[] enemies;
     //[SerializeField]
     //public Transform[] spawnPoints;
-    public float maxSpawnTime;
+    public float maxSpawnTime = 5f;
     public float curSpawnTime;
     bool active;
     GameObject player;
-    Vector3 degree;
+    Vector2 degree;
 
 
     // Start is called before the first frame update
     void Start()    
     {
         player = GameObject.Find("Player");
-        gameObject.SetActive(false);
         active = false;
     }
 
@@ -27,16 +26,15 @@ public class EnemyManager : MonoBehaviour
     void Update()
     {
         degree = player.transform.position - transform.position;
-        if (degree.magnitude<= 15)
+        if (degree.magnitude >= 30)
         {
             active = true;
-            gameObject.SetActive(true);
             
         }
         else
         {
             active = false;
-            gameObject.SetActive(false);
+            
         }
 
         if(active == true)
@@ -45,7 +43,7 @@ public class EnemyManager : MonoBehaviour
             if(curSpawnTime > maxSpawnTime)
             {
                 SpawnEnemy();
-                maxSpawnTime = Random.Range(0.5f, 3f);
+                maxSpawnTime = Random.Range(3f,5f);
                 curSpawnTime = 0;
             }
         }
@@ -54,12 +52,12 @@ public class EnemyManager : MonoBehaviour
 
     void SpawnEnemy()
     {
-        int normalEnemy = Random.Range(0, 3);
-        int gunEnemy = Random.Range(0, 3);
+        int normalEnemy = Random.Range(6, 9);
+        int gunEnemy = Random.Range(3, 6);
         int specialEnemy = Random.Range(0, 3);
         int spawnPercent = Random.Range(0, 100);
 
-        if(spawnPercent <= 60)
+        if(spawnPercent <= 83)
         {
             GameObject enemy = Instantiate(enemies[normalEnemy], transform.position, Quaternion.identity);
         }

@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     //[SerializeField]
     //private StageData stageData;
     //private Movement movement;
+
     public GameObject[] weapons;
     Weapon equipWeapon;
     SpriteRenderer spriteRenderer;
@@ -21,6 +23,14 @@ public class Player : MonoBehaviour
     float fireDelay;
 
     public int health = 5;
+
+    int score;
+    
+    public int Score
+    {
+        get => score;
+        set => score = Mathf.Max(0, value);
+    }
 
     //private void Awake()
     //{
@@ -79,14 +89,17 @@ public class Player : MonoBehaviour
         if (collision.tag == "EnemyBullet")
         {
             {
-               
                 Bullet enemyBullet = collision.GetComponent<Bullet>();
                 health -= enemyBullet.damage;
                 //StartCoroutine(OnDamage());
-                
-            }
 
+            }
         }
+    }
+    public void DieEvent()
+    {
+        SceneManager.LoadScene("GameOver");
+        PlayerPrefs.SetInt("Score", score);
     }
 
     //IEnumerator OnDamage()

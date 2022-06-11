@@ -13,6 +13,7 @@ TagManager:
   - SBullet
   - PBullet
   - EnemyBullet
+  - SpecialEnemy
   layers:
   - Default
   - TransparentFX
