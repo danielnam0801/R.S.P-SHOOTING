@@ -142,12 +142,12 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            Destroy(gameObject);
-            player.health -= 1;
-            Debug.Log(player.health);
-        }
+        //if (collision.gameObject.tag == "Player")
+        //{
+        //    Destroy(gameObject);
+        //    player.health -= 1;
+        //    Debug.Log(player.health);
+        //}
        
         if(gameObject.tag == "REnemy")
         {
@@ -159,7 +159,7 @@ public class Enemy : MonoBehaviour
             }
             else if (collision.gameObject.tag == "SBullet")
             {
-                health += 1;
+                Destroy(collision.gameObject);
             }
 
         }
@@ -173,7 +173,7 @@ public class Enemy : MonoBehaviour
             }
             else if (collision.gameObject.tag == "RBullet")
             {
-                health += 1;
+                Destroy(collision.gameObject);
             }
         }
         if (gameObject.tag == "SEnemy")
@@ -186,7 +186,7 @@ public class Enemy : MonoBehaviour
             }
             else if (collision.gameObject.tag == "PBullet")
             {
-                health += 1;
+                Destroy(collision.gameObject);
             }
         }
     }

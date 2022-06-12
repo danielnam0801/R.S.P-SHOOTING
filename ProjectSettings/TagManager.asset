@@ -25,13 +25,13 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - PlayerDamaged
+  - Player
   - 
   - SpecialEnemy
   - NormalEnemy
   - GunEnemy
-  - 
+  - Bullet
   - 
   - 
   - 

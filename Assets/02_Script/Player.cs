@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public GameObject[] weapons;
     Weapon equipWeapon;
     SpriteRenderer spriteRenderer;
+    PlayerAction action;
     //int equipWeaponIndex = -1;
     bool sDown1;
     bool sDown2;
@@ -32,10 +33,11 @@ public class Player : MonoBehaviour
         set => score = Mathf.Max(0, value);
     }
 
-    //private void Awake()
-    //{
-    //    movement = GetComponent<Movement>();
-    //}
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        action = GameObject.Find("Player").GetComponent<PlayerAction>();
+    }
     void Update()
     {
         Swap();
@@ -95,6 +97,32 @@ public class Player : MonoBehaviour
 
             }
         }
+        if(collision.gameObject.layer == 13)
+        {
+            Destroy(collision.gameObject);
+            health -= 1;
+            Debug.Log(health);
+            StopCoroutine("OnDamage");
+            StartCoroutine("OnDamage");
+        }
+        if (collision.gameObject.layer == 14)
+        {
+            Destroy(collision.gameObject);
+            health -= 1;
+            Debug.Log(health);
+            StopCoroutine("OnDamage");
+            StartCoroutine("OnDamage");
+        }
+        if (collision.gameObject.layer == 15)
+        {
+            Destroy(collision.gameObject);
+            health -= 1;
+            Debug.Log(health);
+            StopCoroutine("OnDamage");
+            StartCoroutine("OnDamage");
+        }
+
+
     }
     public void DieEvent()
     {
@@ -102,13 +130,28 @@ public class Player : MonoBehaviour
         PlayerPrefs.SetInt("Score", score);
     }
 
-    //IEnumerator OnDamage()
-    //{
-    //    isDamage = true;
-    //    yield return new WaitForSeconds(1f);
+    IEnumerator OnDamage()
+    {
+        gameObject.layer = 10;
+        action.speed = 5f;
+        
 
-    //    isDamage = false;
-    //}
+        for(int i=0; i < 4; i++)
+        {
+            spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+            yield return new WaitForSeconds(0.2f);
+
+            spriteRenderer.color = new Color(1, 1, 1, 1);
+            yield return new WaitForSeconds(0.2f);
+        }
+        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+        yield return new WaitForSeconds(0.2f);
+        spriteRenderer.color = new Color(1, 1, 1, 1);
+
+        action.speed = 3f;
+        gameObject.layer = 11;
+        
+    }
 
     //void Move()
     //{
