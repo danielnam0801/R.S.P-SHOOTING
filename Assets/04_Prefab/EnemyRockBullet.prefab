@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4395910609046320880}
   - component: {fileID: -2380196468583153931}
   - component: {fileID: -4180845389646029300}
-  - component: {fileID: -4278890904153745675}
   - component: {fileID: 101450645964647860}
+  - component: {fileID: -7970264216814413314}
   m_Layer: 0
   m_Name: EnemyRockBullet
   m_TagString: EnemyBullet
@@ -133,19 +133,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-4278890904153745675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5539125388002583491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9b9786e552cfbb419b6f8062c4936fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!114 &101450645964647860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,3 +147,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageData: {fileID: 11400000, guid: dfabef2f8ef717a45af1b8c1e0e803ca, type: 2}
   destroySize: 2
+--- !u!114 &-7970264216814413314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5539125388002583491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee31c2430421f3e4795ce403c68ed355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  moveDir: {x: 0, y: 0, z: 0}

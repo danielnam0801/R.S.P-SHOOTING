@@ -6,7 +6,8 @@ public enum AttackType { CircleFire = 0, SingleFireToCenterPosition }
 public class BossWeapon : MonoBehaviour
 {
     [SerializeField]
-    private GameObject projectilePrefab;
+    private GameObject[] enemyProjectile;
+
 
     public void StartFiring(AttackType attackType)
     {
@@ -30,7 +31,8 @@ public class BossWeapon : MonoBehaviour
         {
             for (int i = 0; i < count; i++)
             {
-                GameObject clone = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                int ran = Random.Range(0, 3);
+                GameObject clone = Instantiate(enemyProjectile[ran], transform.position, Quaternion.identity);
                 float angle = weightAngle * intervalAngle * i * 2;
                 float x = Mathf.Cos(angle * Mathf.PI / 180.0f);
                 float y = Mathf.Sin(angle * Mathf.PI / 180.0f);
@@ -48,7 +50,8 @@ public class BossWeapon : MonoBehaviour
         float attackRate = 0.2f;
         while (true)
         {
-            GameObject clone = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            int ran = Random.Range(0, 3);
+            GameObject clone = Instantiate(enemyProjectile[ran], transform.position, Quaternion.identity);
             Vector3 direction = (targetPosition - clone.transform.position).normalized;
             clone.GetComponent<Movement2D>().MoveTo(direction);
             yield return new WaitForSeconds(attackRate);

@@ -7,14 +7,13 @@ public class Enemy : MonoBehaviour
 {
     public int health;
     public int nScore = 100;
-    public int gScore = 500;
-    public int sScore = 1000;
+    public int gScore = 300;
+    public int sScore = 600;
     float nSpeed = 2;
-    float gSpeed = 4;
+    float gSpeed = 3;
     float sSpeed = 1;
    
     public Sprite[] sprites;
-    public GameObject bullet;
     Rigidbody2D rb;
     //SpriteRenderer spriteRenderer;
     Transform targetTrm;
