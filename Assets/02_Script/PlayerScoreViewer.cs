@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class PlayerScoreViewer : MonoBehaviour
 {
     Player player;
-    TextMeshProUGUI textScore;
+    Text textScore;
     void Start()
     {
-        textScore = GetComponent<TextMeshProUGUI>();
+        textScore = GetComponent<Text>();
         player = FindObjectOfType<Player>();
     }
 

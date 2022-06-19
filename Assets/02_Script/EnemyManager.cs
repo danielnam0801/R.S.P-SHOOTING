@@ -13,40 +13,51 @@ public class EnemyManager : MonoBehaviour
     bool active;
     GameObject player;
     Vector2 degree;
-
+    CountDown count;
+    bool gameActive;
 
     // Start is called before the first frame update
     void Start()    
     {
+        count = GameObject.Find("Time").GetComponent<CountDown>();
         player = GameObject.Find("Player");
         active = false;
+        gameActive = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        degree = player.transform.position - transform.position;
-        if (degree.magnitude >= 30)
+        if(count.time <= 5)
         {
-            active = true;
-            
+            gameActive = true;
         }
-        else
+        if (gameActive == false)
         {
-            active = false;
-            
-        }
-
-        if(active == true)
-        {
-            curSpawnTime += Time.deltaTime;
-            if(curSpawnTime > maxSpawnTime)
+            degree = player.transform.position - transform.position;
+            if (degree.magnitude >= 30)
             {
-                SpawnEnemy();
-                maxSpawnTime = Random.Range(3f,5f);
-                curSpawnTime = 0;
+                active = true;
+
+            }
+            else
+            {
+                active = false;
+
+            }
+
+            if (active == true)
+            {
+                curSpawnTime += Time.deltaTime;
+                if (curSpawnTime > maxSpawnTime)
+                {
+                    SpawnEnemy();
+                    maxSpawnTime = Random.Range(3f, 5f);
+                    curSpawnTime = 0;
+                }
             }
         }
+        
         
     }
 

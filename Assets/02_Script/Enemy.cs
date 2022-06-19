@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     public int sScore = 600;
     float nSpeed = 2;
     float gSpeed = 3;
-    float sSpeed = 1;
+    public float sSpeed = 1;
    
     public Sprite[] sprites;
     Rigidbody2D rb;

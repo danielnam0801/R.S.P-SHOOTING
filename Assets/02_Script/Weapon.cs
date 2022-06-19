@@ -16,13 +16,17 @@ public class Weapon : MonoBehaviour
     public Transform firePosition;
     Vector3 dir;
     Camera cam;
+    ObjectPooler Rpooler;
+    ObjectPooler Spooler;
+    ObjectPooler Ppooler;
     //ObjectPooler_Advance objectPooler;
 
     private void Awake()
     {
         cam = Camera.main;
-        //objectPooler = FindObjectOfType<ObjectPooler_Advance>();
-        
+        Rpooler = GameObject.Find("RockBulletPos").GetComponent<ObjectPooler>();
+        Spooler = GameObject.Find("ScissorBulletPos").GetComponent<ObjectPooler>();
+        Ppooler = GameObject.Find("PaperBulletPos").GetComponent<ObjectPooler>();
     }
     private void Update()
     {
@@ -54,22 +58,23 @@ public class Weapon : MonoBehaviour
         //GameObject obj = objectPooler.GetObject(rock);
         //obj.transform.position = transform.position;
         //obj.transform.rotation = transform.rotation;
-        
-        bulletFactory = Instantiate(rock, firePosition.transform.position, Quaternion.identity);
+
+        //bulletFactory = Instantiate(rock, firePosition.transform.position, Quaternion.identity);
+        bulletFactory = Rpooler.SpawnObject(transform.position , Quaternion.identity);
         bulletFactory.gameObject.GetComponent<Bullet>().Shoot(dir);
         yield return new WaitForSeconds(rate);
     }
 
     IEnumerator ScissorSpawn()
     {
-        bulletFactory = Instantiate(scissor, firePosition.transform.position, Quaternion.identity);
+        bulletFactory = Spooler.SpawnObject(transform.position, Quaternion.identity);
         bulletFactory.gameObject.GetComponent<Bullet>().Shoot(dir);
         yield return new WaitForSeconds(rate);
     }
 
     IEnumerator PaperSpawn()
     {
-        bulletFactory = Instantiate(paper, firePosition.transform.position, Quaternion.identity);
+        bulletFactory = Ppooler.SpawnObject(transform.position, Quaternion.identity);
         bulletFactory.gameObject.GetComponent<Bullet>().Shoot(dir);
         yield return new WaitForSeconds(rate);
     }

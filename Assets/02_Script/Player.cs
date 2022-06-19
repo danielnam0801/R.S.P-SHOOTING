@@ -88,6 +88,16 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.tag == "Boss")
+        {
+            CircleCollider2D boss = collision.gameObject.GetComponent<CircleCollider2D>();
+            if(collision == boss)
+            {
+                health -= 1;
+                Debug.Log(health);
+            }
+            
+        }
         if (collision.tag == "EnemyBullet")
         {
             {
