@@ -6,6 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int health;
+    public int maxHealth;
     public int nScore = 100;
     public int gScore = 300;
     public int sScore = 600;
@@ -27,6 +28,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
+        health = maxHealth;
         player = FindObjectOfType<Player>();
         rb = GetComponent<Rigidbody2D>();
         targetTrm = GameObject.Find("Player").GetComponent<Transform>();

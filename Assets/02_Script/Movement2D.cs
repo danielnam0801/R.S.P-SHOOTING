@@ -18,7 +18,7 @@ public class Movement2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += moveDir * moveSpeed * Time.deltaTime;
+        transform.Translate(moveDir * moveSpeed * Time.deltaTime, Space.Self);
     }
 
     public void MoveTo(Vector3 direction)

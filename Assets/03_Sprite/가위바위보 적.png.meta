@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: a46aef103904e7b4a9a0ea22dc61b781
+guid: de0775239929f684d87c4f93ca7d74c5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3325564065185704714
-    second: "\uAC00\uC704(\uC8010_0"
+      213: -6662237475955521010
+    second: "\uAC00\uC704\uBC14\uC704\uBCF4 \uC801_0"
   - first:
-      213: -3677595403919867066
-    second: "\uAC00\uC704(\uC8010_1"
+      213: 5599628013460470474
+    second: "\uAC00\uC704\uBC14\uC704\uBCF4 \uC801_1"
   - first:
-      213: -1457339372081804721
-    second: "\uAC00\uC704(\uC8010_2"
+      213: 703779222190539623
+    second: "\uAC00\uC704\uBC14\uC704\uBCF4 \uC801_2"
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -108,17 +108,29 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uAC00\uC704(\uC8010_0"
+      name: "\uAC00\uC704\uBC14\uC704\uBCF4 \uC801_0"
       rect:
         serializedVersion: 2
-        x: 14
-        y: 3
-        width: 37
-        height: 59
+        x: 0
+        y: 0
+        width: 141
+        height: 171
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -126,20 +138,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f45dc03a1939d1d0800000000000000
-      internalID: -3325564065185704714
+      spriteID: e0a406c405afa83a0800000000000000
+      internalID: -6662237475955521010
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uAC00\uC704(\uC8010_1"
+      name: "\uAC00\uC704\uBC14\uC704\uBCF4 \uC801_1"
       rect:
         serializedVersion: 2
-        x: 63
-        y: 3
-        width: 37
-        height: 59
+        x: 172
+        y: 0
+        width: 179
+        height: 224
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6434fb1077e86fcc0800000000000000
-      internalID: -3677595403919867066
+      spriteID: aca33a89200e5bd40800000000000000
+      internalID: 5599628013460470474
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uAC00\uC704(\uC8010_2"
+      name: "\uAC00\uC704\uBC14\uC704\uBCF4 \uC801_2"
       rect:
         serializedVersion: 2
-        x: 114
-        y: 3
-        width: 37
-        height: 59
+        x: 383
+        y: 0
+        width: 142
+        height: 224
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,8 +180,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4a8fd9ff8d76cbe0800000000000000
-      internalID: -1457339372081804721
+      spriteID: 763c7fa497354c900800000000000000
+      internalID: 703779222190539623
       vertices: []
       indices: 
       edges: []

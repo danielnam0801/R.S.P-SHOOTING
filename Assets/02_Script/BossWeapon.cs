@@ -9,54 +9,46 @@ public class BossWeapon : MonoBehaviour
     private GameObject[] enemyProjectile;
 
 
-    public void StartFiring(AttackType attackType)
+    public void StartFiring()
     {
-        StartCoroutine(attackType.ToString());
+        StartCoroutine(CircleFire());
     }
 
-    public void StopFiring(AttackType attackType)
+    public void StopFiring()
     {
-        StopCoroutine(attackType.ToString());
+        StopCoroutine(CircleFire());
     }
 
     private IEnumerator CircleFire()
     {
         float attackRate = 0.5f;
-        int count = 30;
+        int count = 15;
         float intervalAngle = 360 / count;
         float weightAngle = 0;
-
+        
         Debug.Log(1);
-        while (true)
+        
+        for(int j = 0; j<count; j++)
         {
-            for (int i = 0; i < count; i++)
+            int rand = Random.Range(-2,2);
+            for (int i = 0; i < 24; i++)
             {
                 int ran = Random.Range(0, 3);
                 GameObject clone = Instantiate(enemyProjectile[ran], transform.position, Quaternion.identity);
-                float angle = weightAngle * intervalAngle * i * 2;
-                float x = Mathf.Cos(angle * Mathf.PI / 180.0f);
-                float y = Mathf.Sin(angle * Mathf.PI / 180.0f);
-                clone.GetComponent<Movement2D>().MoveTo(new Vector2(x, y));
+                float angle = weightAngle * 15 * i;
+                clone.transform.position = transform.position;
+                clone.transform.rotation = Quaternion.Euler(0,0,angle);
+               
             }
-
-            weightAngle += 1;
-            yield return new WaitForSeconds(attackRate);
+            weightAngle += rand;
+            yield return new WaitForSeconds(attackRate);   
         }
+        
+         
     }
+        
+    
 
-    private IEnumerator SingleFireToCenterPosition()
-    {
-        Vector3 targetPosition = Vector3.zero;
-        float attackRate = 0.2f;
-        while (true)
-        {
-            int ran = Random.Range(0, 3);
-            GameObject clone = Instantiate(enemyProjectile[ran], transform.position, Quaternion.identity);
-            Vector3 direction = (targetPosition - clone.transform.position).normalized;
-            clone.GetComponent<Movement2D>().MoveTo(direction);
-            yield return new WaitForSeconds(attackRate);
-        }
-    }
     // Start is called before the first frame update
     void Start()
     {

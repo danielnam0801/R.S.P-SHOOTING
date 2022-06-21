@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     bool fireDown;
     bool isFireReady = true;
     bool isDamage;
-
+    bool fireDown1;
     float fireDelay;
 
     public int health = 5;
@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
     {
         Swap();
         Attack();
+        
         GetInput();
     }
     void GetInput()
@@ -50,6 +51,7 @@ public class Player : MonoBehaviour
         sDown2 = Input.GetButtonDown("Swap2");
         sDown3 = Input.GetButtonDown("Swap3");
         fireDown = Input.GetButtonDown("Fire1");
+        //fireDown1 = Input.GetButton("Fire1");
     }
 
     void Swap()
@@ -79,9 +81,9 @@ public class Player : MonoBehaviour
         fireDelay += Time.deltaTime;
         isFireReady = equipWeapon.rate < fireDelay;
 
-        if(fireDown && isFireReady)
+        if((fireDown) && isFireReady )
         {
-            equipWeapon.Use();
+           equipWeapon.Use();
         }
         fireDelay = 0;
     }
@@ -95,15 +97,18 @@ public class Player : MonoBehaviour
             {
                 health -= 1;
                 Debug.Log(health);
+                StopCoroutine("OnDamage");
+                StartCoroutine(OnDamage());
             }
             
         }
         if (collision.tag == "EnemyBullet")
         {
             {
-                Bullet enemyBullet = collision.GetComponent<Bullet>();
-                health -= enemyBullet.damage;
-                //StartCoroutine(OnDamage());
+               
+                health -= 1;
+                StopCoroutine("OnDamage");
+                StartCoroutine(OnDamage());
 
             }
         }
