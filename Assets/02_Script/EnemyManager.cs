@@ -21,14 +21,14 @@ public class EnemyManager : MonoBehaviour
     {
         count = GameObject.Find("Time").GetComponent<CountDown>();
         player = GameObject.Find("Player");
-        active = false;
+        //active = false;
         gameActive = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(count.time <= 5)
+        if(count.time <= 1)
         {
             gameActive = true;
         }

@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  maxHealth: 0
   nScore: 100
   gScore: 300
   sScore: 600

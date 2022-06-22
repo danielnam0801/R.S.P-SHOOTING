@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
@@ -9,6 +10,9 @@ public class Player : MonoBehaviour
     //private StageData stageData;
     //private Movement movement;
 
+    public Image weapon1;
+    public Image weapon2;
+    public Image weapon3;
     public GameObject[] weapons;
     Weapon equipWeapon;
     SpriteRenderer spriteRenderer;
@@ -23,7 +27,7 @@ public class Player : MonoBehaviour
     bool fireDown1;
     float fireDelay;
 
-    public int health = 5;
+    public int health = 7;
 
     int score;
     
@@ -44,6 +48,10 @@ public class Player : MonoBehaviour
         Attack();
         
         GetInput();
+        if (health <= 0)
+        {
+            
+        }
     }
     void GetInput()
     {
@@ -57,9 +65,30 @@ public class Player : MonoBehaviour
     void Swap()
     {
         int weaponIndex = -1;
-        if (sDown1) weaponIndex = 0;
-        if (sDown2) weaponIndex = 1;
-        if (sDown3) weaponIndex = 2;
+        if (sDown1)
+        {
+            weaponIndex = 0;
+            weapon1.color = new Color(1, 1, 1, 1);
+            weapon2.color = new Color(0.5f, 0.5f, 0.5f, 1);
+            weapon3.color = new Color(0.5f, 0.5f, 0.5f, 1);
+        }
+        
+        if (sDown2)
+        {
+            weaponIndex = 1;
+            weapon2.color = new Color(1,1,1,1);
+            weapon1.color = new Color(0.5f, 0.5f, 0.5f, 1);
+            weapon3.color = new Color(0.5f, 0.5f, 0.5f, 1);
+        }
+        
+        if (sDown3)
+        {
+            weaponIndex = 2;
+            weapon3.color = new Color(1,1,1,1);
+            weapon1.color = new Color(0.5f, 0.5f, 0.5f, 1);
+            weapon2.color = new Color(0.5f, 0.5f, 0.5f, 1);
+        }
+        
 
         if (sDown1 || sDown2 || sDown3)
         {
@@ -95,8 +124,6 @@ public class Player : MonoBehaviour
             CircleCollider2D boss = collision.gameObject.GetComponent<CircleCollider2D>();
             if(collision == boss)
             {
-                health -= 1;
-                Debug.Log(health);
                 StopCoroutine("OnDamage");
                 StartCoroutine(OnDamage());
             }
@@ -106,7 +133,6 @@ public class Player : MonoBehaviour
         {
             {
                
-                health -= 1;
                 StopCoroutine("OnDamage");
                 StartCoroutine(OnDamage());
 
@@ -115,29 +141,21 @@ public class Player : MonoBehaviour
         if(collision.gameObject.layer == 13)
         {
             Destroy(collision.gameObject);
-            health -= 1;
-            Debug.Log(health);
             StopCoroutine("OnDamage");
             StartCoroutine("OnDamage");
         }
         if (collision.gameObject.layer == 14)
         {
             Destroy(collision.gameObject);
-            health -= 1;
-            Debug.Log(health);
             StopCoroutine("OnDamage");
             StartCoroutine("OnDamage");
         }
         if (collision.gameObject.layer == 15)
         {
             Destroy(collision.gameObject);
-            health -= 1;
-            Debug.Log(health);
             StopCoroutine("OnDamage");
             StartCoroutine("OnDamage");
         }
-
-
     }
     public void DieEvent()
     {
@@ -149,9 +167,13 @@ public class Player : MonoBehaviour
     {
         gameObject.layer = 10;
         action.speed = 5f;
-        
-
-        for(int i=0; i < 4; i++)
+        health -= 1;
+        Debug.Log(health);
+        if (health <= 0)
+        {
+            
+        }
+        for (int i=0; i < 4; i++)
         {
             spriteRenderer.color = new Color(1, 1, 1, 0.4f);
             yield return new WaitForSeconds(0.2f);

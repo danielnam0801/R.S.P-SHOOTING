@@ -31,11 +31,11 @@ public class BossWeapon : MonoBehaviour
         for(int j = 0; j<count; j++)
         {
             int rand = Random.Range(-2,2);
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < 36; i++)
             {
                 int ran = Random.Range(0, 3);
                 GameObject clone = Instantiate(enemyProjectile[ran], transform.position, Quaternion.identity);
-                float angle = weightAngle * 15 * i;
+                float angle = weightAngle * 10 * i;
                 clone.transform.position = transform.position;
                 clone.transform.rotation = Quaternion.Euler(0,0,angle);
                

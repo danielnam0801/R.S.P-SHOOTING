@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
 
@@ -18,7 +19,6 @@ public class CountDown : MonoBehaviour
     void Start()
     {
         boss = GameObject.Find("Boss");
-        boss.SetActive(false);
         bossText = GameObject.Find("BossText").GetComponent<Text>();
         StartCoroutine("Count");
 
@@ -48,9 +48,7 @@ public class CountDown : MonoBehaviour
 
             if (time <= 0)
             {
-                boss.SetActive(true);
-                bossText.enabled = false;
-                countText.enabled = false;
+                SceneManager.LoadScene("BossScene");
                 break;
             }
         }
