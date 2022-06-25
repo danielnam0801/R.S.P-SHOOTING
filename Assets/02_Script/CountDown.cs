@@ -14,14 +14,30 @@ public class CountDown : MonoBehaviour
     int sec;
     GameObject boss;
     Text bossText;
-
+    Text score;
+    GameObject image;
+    Image playerHp;
+    Text imageText;
+    public GameObject gamePanel;
+    //public GameObject explosion;
+    float ntime = 0f;
+    float ftime = 1f;
+    public Image Panel;
+    //public GameObject player_1;
+    int a = 0;
+    Player player_2;    
 
     void Start()
     {
+        score = GameObject.Find("Score").GetComponent<Text>();
+        image = GameObject.Find("Image");
+        playerHp = GameObject.Find("PlayerHp").GetComponent<Image>();
+        imageText = GameObject.Find("5/10").GetComponent<Text>(); 
+        a = 0;
         boss = GameObject.Find("Boss");
         bossText = GameObject.Find("BossText").GetComponent<Text>();
         StartCoroutine("Count");
-
+        player_2 = GameObject.Find("Player").GetComponent<Player>();
     }
     IEnumerator Count()
     {
@@ -46,7 +62,63 @@ public class CountDown : MonoBehaviour
 
             }
 
-            if (time <= 0)
+            if(time <= 0)
+            {
+                PlayerPrefs.SetInt("Health", player_2.health);
+                PlayerPrefs.SetInt("Score1", player_2.Score);
+                if(player_2.transform.position.x <= 28.5 || transform.position.x >= -28.5)
+                {
+                     PlayerPrefs.SetFloat("positionX", player_2.transform.position.x);
+                }
+                   
+                else if (player_2.transform.position.x > 28.5f)
+                {
+                    PlayerPrefs.SetFloat("positionX", 28.5f);
+                }
+                else if (player_2.transform.position.x < -28.5f)
+                {
+                    PlayerPrefs.SetFloat("positionX", -28.5f);
+                }
+                if (player_2.transform.position.y <= 28.5 || transform.position.y >= -28.5)
+                {
+                    PlayerPrefs.SetFloat("positionY", player_2.transform.position.y);
+                }
+                else if (player_2.transform.position.y > 28.5)
+                {
+                    PlayerPrefs.SetFloat("positionY", 28.5f);
+                }
+                else if (player_2.transform.position.y < -28.5)
+                {
+                    PlayerPrefs.SetFloat("positionY", -28.5f);
+                }
+                Panel.gameObject.SetActive(true);
+                //bossText.enabled =false;
+                //countText.enabled = false;
+                //score.enabled = false;
+                //image.SetActive(false);
+                //imageText.enabled = false;
+
+
+                
+
+                
+                Color alpha = Panel.color;
+                while (alpha.a < 1f)
+
+                {
+
+                    ntime += Time.deltaTime / ftime;
+                    alpha.a = Mathf.Lerp(0.0f, 1, ntime);
+                    Panel.color = alpha;
+                    yield return null;
+                }
+
+                yield return new WaitForSeconds(1f);
+                //gamePanel.SetActive(true);
+                //player_1.SetActive(true);
+
+            }
+            if (time <= -1)
             {
                 SceneManager.LoadScene("BossScene");
                 break;

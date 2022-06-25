@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     public Image weapon1;
     public Image weapon2;
     public Image weapon3;
+    public Image num;
+    public Image num1;
+    public Image num2;
     public GameObject[] weapons;
     Weapon equipWeapon;
     SpriteRenderer spriteRenderer;
@@ -28,6 +31,8 @@ public class Player : MonoBehaviour
     float fireDelay;
 
     public int health = 7;
+    public int maxHealth = 7;
+    public Text playerHealthTxt;
 
     int score;
     
@@ -41,6 +46,9 @@ public class Player : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         action = GameObject.Find("Player").GetComponent<PlayerAction>();
+        num.color = new Color(0.5f, 0.5f, 0.5f, 1);
+        num1.color = new Color(0.5f, 0.5f, 0.5f, 1);
+        num2.color = new Color(0.5f, 0.5f, 0.5f, 1);
     }
     void Update()
     {
@@ -52,6 +60,10 @@ public class Player : MonoBehaviour
         {
             
         }
+    }
+    private void LateUpdate()
+    {
+        playerHealthTxt.text = ": " + health.ToString();
     }
     void GetInput()
     {
@@ -71,6 +83,9 @@ public class Player : MonoBehaviour
             weapon1.color = new Color(1, 1, 1, 1);
             weapon2.color = new Color(0.5f, 0.5f, 0.5f, 1);
             weapon3.color = new Color(0.5f, 0.5f, 0.5f, 1);
+            num.color = new Color(1, 1, 1, 1);
+            num1.color = new Color(0.5f, 0.5f, 0.5f, 1);
+            num2.color = new Color(0.5f, 0.5f, 0.5f, 1);
         }
         
         if (sDown2)
@@ -79,6 +94,9 @@ public class Player : MonoBehaviour
             weapon2.color = new Color(1,1,1,1);
             weapon1.color = new Color(0.5f, 0.5f, 0.5f, 1);
             weapon3.color = new Color(0.5f, 0.5f, 0.5f, 1);
+            num1.color = new Color(1, 1, 1, 1);
+            num2.color = new Color(0.5f, 0.5f, 0.5f, 1);
+            num.color = new Color(0.5f, 0.5f, 0.5f, 1);
         }
         
         if (sDown3)
@@ -87,6 +105,9 @@ public class Player : MonoBehaviour
             weapon3.color = new Color(1,1,1,1);
             weapon1.color = new Color(0.5f, 0.5f, 0.5f, 1);
             weapon2.color = new Color(0.5f, 0.5f, 0.5f, 1);
+            num2.color = new Color(1, 1, 1, 1);
+            num1.color = new Color(0.5f, 0.5f, 0.5f, 1);
+            num.color = new Color(0.5f, 0.5f, 0.5f, 1);
         }
         
 

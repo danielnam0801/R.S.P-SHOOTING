@@ -13,18 +13,25 @@ public class GameManager : MonoBehaviour
     public GameObject gamePanel;
     public GameObject spawn1;
     public GameObject[] spawn;
+    public GameObject explosion;
     float time = 0f;
     float ftime = 1f;
     public Image Panel;
     public GameObject player_1;
+    public Text playerHealthTxt;
+    //public RectTransform bossHealthBar;
+
     Image Button;
     Image image;
     Text text;
 
-
     public void Update()
     {
-
+        
+    }
+    public void LateUpdate()
+    {
+        playerHealthTxt.text = player.health.ToString();
     }
     public void Fade()
     {
@@ -53,10 +60,10 @@ public class GameManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1f);
-
+        startCamera.SetActive(false);
         gamePanel.SetActive(true);
         player_1.SetActive(true);
-        startCamera.SetActive(false);
+        
         
         
 

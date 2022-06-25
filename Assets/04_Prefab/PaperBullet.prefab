@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8930410918297178517}
   - component: {fileID: 5803732730398576071}
   - component: {fileID: 1147714039691877437}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: PaperBullet
   m_TagString: PBullet
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8483380154467873319}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.45, y: 0.45, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

@@ -149,5 +149,5 @@ MonoBehaviour:
   nScore: 100
   gScore: 300
   sScore: 600
-  sSpeed: 1
+  sSpeed: 5
   sprites: []

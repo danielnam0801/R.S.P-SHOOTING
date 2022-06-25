@@ -10,9 +10,9 @@ public class Enemy : MonoBehaviour
     public int nScore = 100;
     public int gScore = 300;
     public int sScore = 600;
-    float nSpeed = 2;
-    float gSpeed = 3;
-    public float sSpeed = 1;
+    float nSpeed = 4;
+    float gSpeed = 5;
+    float sSpeed = 3;
    
     public Sprite[] sprites;
     Rigidbody2D rb;
