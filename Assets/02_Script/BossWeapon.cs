@@ -49,6 +49,23 @@ public class BossWeapon : MonoBehaviour
             for (int i = 0; i < 15; i++)
             {
                 int ran = Random.Range(0, 3);
+                //GameObject clone;
+                //string str = string.Empty;
+                //switch (rand)
+                //{
+                //    case 0:
+                //        str = "EnemyPaperBullet 1";
+                //        break;
+                //    case 1:
+                //        str = "EnemyRockBullet";
+                //        break;
+                //    case 2:
+                //        str = "EnemyScissorBullet";
+                //        break;
+
+                //}
+                //clone = PoolingManager._instance.PopObj(str);
+
                 GameObject clone = Instantiate(enemyProjectile[ran], transform.position, Quaternion.identity);
                 float angle = weightAngle + intervalAngle * i;
                 clone.transform.position = transform.position;
@@ -76,6 +93,23 @@ public class BossWeapon : MonoBehaviour
             for (int i = 0; i < 24; i++)
             {
                 int ran = Random.Range(0, 3);
+                //GameObject clone;
+                //string str = string.Empty;
+                //switch (rand)
+                //{
+                //    case 0:
+                //        str = "Boss2PaperBullet 1";
+                //        break;
+                //    case 1:
+                //        str = "Boss2Rock";
+                //        break;
+                //    case 2:
+                //        str = "Boss2Scissorl";
+                //        break;
+
+                //}
+                //clone = PoolingManager._instance.PopObj(str);
+
                 GameObject clone = Instantiate(enemy2Projectile[ran], transform.position, Quaternion.identity);
                 float angle = weightAngle + intervalAngle * i;
                 clone.transform.position = transform.position;
@@ -94,15 +128,33 @@ public class BossWeapon : MonoBehaviour
         int count = 24;
         float intervalAngle = 360 / count;
         float weightAngle = 0;
-        
+
         Debug.Log(1);
-        
-        for(int j = 0; j<10; j++)
+
+        for (int j = 0; j < 10; j++)
         {
-            int rand = Random.Range(0,4);
+            int rand = Random.Range(0, 4);
             for (int i = 0; i < 24; i++)
             {
                 int ran = Random.Range(0, 3);
+                //Pooling
+                //GameObject clone;
+                //string str = string.Empty;
+                //switch (rand)
+                //{
+                //    case 0:
+                //        str = "EnemyPaperBullet 1";
+                //        break;
+                //    case 1:
+                //        str = "EnemyRockBullet";
+                //        break;
+                //    case 2:
+                //        str = "EnemyScissorBullet";
+                //        break;
+
+                //}
+                //clone = PoolingManager._instance.PopObj(str);
+
                 GameObject clone = Instantiate(enemyProjectile[ran], transform.position, Quaternion.identity);
                 float angle = weightAngle + intervalAngle * i;
                 clone.transform.position = transform.position;
@@ -111,13 +163,13 @@ public class BossWeapon : MonoBehaviour
 
             }
             weightAngle += rand;
-            yield return new WaitForSeconds(attackRate);   
+            yield return new WaitForSeconds(attackRate);
         }
-        
-         
+
+
     }
-        
-    
+
+
 
     // Start is called before the first frame update
     void Start()

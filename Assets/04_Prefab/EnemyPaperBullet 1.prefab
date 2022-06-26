@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 703066713356783352}
   - component: {fileID: -7860801921676023112}
   - component: {fileID: -8617682444694010139}
-  m_Layer: 17
+  - component: {fileID: 5990408724796894972}
+  m_Layer: 20
   m_Name: EnemyPaperBullet 1
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
@@ -151,3 +152,16 @@ CircleCollider2D:
   m_Offset: {x: 0.059173763, y: -0.100000024}
   serializedVersion: 2
   m_Radius: 0.65917367
+--- !u!114 &5990408724796894972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8483380154467873319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811d6553705ccc44ea83d72b8e03365d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 

@@ -29,7 +29,9 @@ public class Player : MonoBehaviour
     bool isDamage;
     bool fireDown1;
     float fireDelay;
+    float wheelinput;
 
+    int rightClick;
     public int health = 7;
     public int maxHealth = 7;
     public Text playerHealthTxt;
@@ -44,6 +46,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        rightClick = 0;
         spriteRenderer = GetComponent<SpriteRenderer>();
         action = GameObject.Find("Player").GetComponent<PlayerAction>();
         num.color = new Color(0.5f, 0.5f, 0.5f, 1);
@@ -71,13 +74,30 @@ public class Player : MonoBehaviour
         sDown2 = Input.GetButtonDown("Swap2");
         sDown3 = Input.GetButtonDown("Swap3");
         fireDown = Input.GetButtonDown("Fire1");
+        //wheelinput = Input.GetAxis("Mouse ScrollWheel");
         //fireDown1 = Input.GetButton("Fire1");
     }
 
     void Swap()
     {
+        if (Input.GetMouseButtonDown(1))
+        {
+            rightClick++;
+            if(rightClick > 3)
+            {
+                rightClick = 1;
+            } 
+        }
         int weaponIndex = -1;
-        if (sDown1)
+        //if(wheelinput > 0)
+        //{
+        //    Debug.Log("위로돌림! : " + wheelinput);
+        //}
+        //if(wheelinput < 0)
+        //{
+        //    Debug.Log("아래로돌림! : " + wheelinput);
+        //}
+        if (sDown1 || rightClick == 1)
         {
             weaponIndex = 0;
             weapon1.color = new Color(1, 1, 1, 1);
@@ -88,7 +108,7 @@ public class Player : MonoBehaviour
             num2.color = new Color(0.5f, 0.5f, 0.5f, 1);
         }
         
-        if (sDown2)
+        if (sDown2 || rightClick == 2)
         {
             weaponIndex = 1;
             weapon2.color = new Color(1,1,1,1);
@@ -99,7 +119,7 @@ public class Player : MonoBehaviour
             num.color = new Color(0.5f, 0.5f, 0.5f, 1);
         }
         
-        if (sDown3)
+        if (sDown3 || rightClick == 3)
         {
             weaponIndex = 2;
             weapon3.color = new Color(1,1,1,1);
@@ -111,7 +131,7 @@ public class Player : MonoBehaviour
         }
         
 
-        if (sDown1 || sDown2 || sDown3)
+        if (sDown1 || sDown2 || sDown3 || Input.GetMouseButtonDown(1))
         {
             if (equipWeapon != null)
                 equipWeapon.gameObject.SetActive(false);
@@ -159,6 +179,12 @@ public class Player : MonoBehaviour
 
             }
         }
+        if(collision.gameObject.layer == 20)
+        {
+            collision.gameObject.GetComponent<PoolingObj>().PushObj();
+            StopCoroutine("OnDamage");
+            StartCoroutine("OnDamage");
+        }
         if(collision.gameObject.layer == 13)
         {
             Destroy(collision.gameObject);
@@ -186,7 +212,7 @@ public class Player : MonoBehaviour
     }
     public void DieEvent()
     {
-        SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene("Clear");
         PlayerPrefs.SetInt("Score1", score);
     }
 

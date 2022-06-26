@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 101450645964647860}
   - component: {fileID: -7970264216814413314}
   - component: {fileID: 4777708302376308633}
-  m_Layer: 17
+  - component: {fileID: -1401305465752434658}
+  m_Layer: 20
   m_Name: EnemyRockBullet
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
@@ -151,3 +152,16 @@ CircleCollider2D:
   m_Offset: {x: 0.02364707, y: -0.02364713}
   serializedVersion: 2
   m_Radius: 0.55270576
+--- !u!114 &-1401305465752434658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5539125388002583491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811d6553705ccc44ea83d72b8e03365d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 

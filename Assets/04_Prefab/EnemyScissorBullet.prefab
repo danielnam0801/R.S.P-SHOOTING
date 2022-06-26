@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 2903463454153369411}
   - component: {fileID: -3368885935122142595}
   - component: {fileID: 485850107635442617}
-  m_Layer: 17
+  - component: {fileID: -6949844504786405516}
+  m_Layer: 20
   m_Name: EnemyScissorBullet
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
@@ -151,3 +152,16 @@ CapsuleCollider2D:
   m_Offset: {x: -0.02364719, y: -0.16552967}
   m_Size: {x: 0.89976335, y: 1.7670578}
   m_Direction: 0
+--- !u!114 &-6949844504786405516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8483380154467873319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811d6553705ccc44ea83d72b8e03365d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 

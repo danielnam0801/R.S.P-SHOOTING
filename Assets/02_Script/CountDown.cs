@@ -113,13 +113,11 @@ public class CountDown : MonoBehaviour
                     Panel.color = alpha;
                     yield return null;
                 }
-
-                yield return new WaitForSeconds(1f);
                 //gamePanel.SetActive(true);
                 //player_1.SetActive(true);
 
             }
-            if (time <= -1)
+            if (time == -1)
             {
                 player_2.gameObject.layer = 11;
                 SceneManager.LoadScene("BossScene");

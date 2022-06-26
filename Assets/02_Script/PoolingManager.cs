@@ -13,10 +13,6 @@ public class PoolingManager : MonoBehaviour
     {
         if (_instance == null)
             _instance = this;
-    }
-
-    private void Start()
-    {
         CreatePooledObj();
     }
 
@@ -34,6 +30,7 @@ public class PoolingManager : MonoBehaviour
                 obj.SetActive(false);
                 _poolObjList[i].objQueue.Enqueue(obj);
             }
+           
         }
     }
 
@@ -101,7 +98,6 @@ public class PoolObj
     [Tooltip("풀링 될 오브젝트의 네임")]
     public string name;
     [Tooltip("풀링 될 오브젝트의 갯수")]
-    [Range(0, 100)]
     public int maxCount;
     [Tooltip("풀링 될 오브젝트")]
     public GameObject obj;

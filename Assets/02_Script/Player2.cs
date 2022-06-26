@@ -29,6 +29,7 @@ public class Player2 : MonoBehaviour
     bool isDamage;
     bool fireDown1;
     float fireDelay;
+    int rightClick;
 
     private int health = 7;
     //public int maxHealth = 7;
@@ -44,6 +45,7 @@ public class Player2 : MonoBehaviour
 
     private void Awake()
     {
+        rightClick = 0;
         gameObject.layer = 11;
         transform.position = new Vector3(PlayerPrefs.GetFloat("positionX"), PlayerPrefs.GetFloat("positionY"),0);
         health = PlayerPrefs.GetInt("Health");
@@ -81,8 +83,16 @@ public class Player2 : MonoBehaviour
 
     void Swap()
     {
+        if (Input.GetMouseButtonDown(1))
+        {
+            rightClick++;
+            if (rightClick > 3)
+            {
+                rightClick = 1;
+            }
+        }
         int weaponIndex = -1;
-        if (sDown1)
+        if (sDown1 || rightClick == 1)
         {
             weaponIndex = 0;
             weapon1.color = new Color(1, 1, 1, 1);
@@ -93,7 +103,7 @@ public class Player2 : MonoBehaviour
             weapon3.color = new Color(0.5f, 0.5f, 0.5f, 1);
         }
 
-        if (sDown2)
+        if (sDown2 || rightClick == 2)
         {
             weaponIndex = 1;
             num1.color = new Color(1, 1, 1, 1);
@@ -104,7 +114,7 @@ public class Player2 : MonoBehaviour
             weapon3.color = new Color(0.5f, 0.5f, 0.5f, 1);
         }
 
-        if (sDown3)
+        if (sDown3 || rightClick == 3)
         {
             weaponIndex = 2;
             num2.color = new Color(1, 1, 1, 1);
@@ -116,7 +126,7 @@ public class Player2 : MonoBehaviour
         }
 
 
-        if (sDown1 || sDown2 || sDown3)
+        if (sDown1 || sDown2 || sDown3 || Input.GetMouseButtonDown(1))
         {
             if (equipWeapon != null)
                 equipWeapon.gameObject.SetActive(false);
@@ -191,7 +201,7 @@ public class Player2 : MonoBehaviour
     }
     public void DieEvent()
     {
-        SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene("Clear");
         PlayerPrefs.SetInt("Score", score);
     }
 

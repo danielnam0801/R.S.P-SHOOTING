@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7970264216814413314}
   - component: {fileID: 4777708302376308633}
   - component: {fileID: 8823912833837238068}
-  m_Layer: 17
+  m_Layer: 20
   m_Name: Boss2Rock
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}

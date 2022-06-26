@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -3368885935122142595}
   - component: {fileID: 485850107635442617}
   - component: {fileID: -2195141650232184200}
-  m_Layer: 17
+  m_Layer: 20
   m_Name: Boss2Scissorl
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}

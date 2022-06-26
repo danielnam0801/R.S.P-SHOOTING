@@ -47,10 +47,13 @@ public class Boss : MonoBehaviour
     Text playerHP;
     Image boss;
     BossExplosion bossEx;
-
+    int x, y,temp;
 
     private void Awake()
     {
+        x = 0;
+        y = 0;
+        temp = 0;
         //boss = GameObject.Find("BossTxt").GetComponent<Image>();
         playerHP = GameObject.Find("5/10").GetComponent<Text>();
         Panel.enabled = false;
@@ -142,10 +145,13 @@ public class Boss : MonoBehaviour
         while (isPhase1 == true)
         {
             BossMove();
+            y = temp;
             int x = Random.Range(0, 7);
+            temp = x;
             switch (x)
             {
                 case 0:
+                    if (x == y) break;
                     if (degree.magnitude <= 13)
                     {
                         Debug.Log(1);
@@ -167,6 +173,7 @@ public class Boss : MonoBehaviour
                     break;
                 case 1:
                 case 2:
+                    if (x == y) break;
                     Debug.Log("ют╥б");
                     if (degree.magnitude <= 13)
                     {
@@ -185,12 +192,14 @@ public class Boss : MonoBehaviour
                     break;
                 case 3:
                 case 4:
+                    if (x == y) break;
                     //BossMove();
                     StartCoroutine("Attack1");
                     yield return new WaitForSeconds(2.5f);
                     break;
                 case 5:
                 case 6:
+                    if(x==y) break;
                     //BossMove();
                     StartCoroutine("Attack2");
                     yield return new WaitForSeconds(7f);
@@ -206,12 +215,16 @@ public class Boss : MonoBehaviour
         Debug.Log("wpqkdsjf");
         while (isPhase2)
         {
+            y = temp;
+            int x = Random.Range(1,8);
+            temp = x;
             BossMove();
-            int x = Random.Range(1, 8);
+            //int x = Random.Range(1, 8);
             switch (x)
             {
                 case 1:
                 case 2:
+                    if (x == y) break;
                     if (degree.magnitude <= 13)
                     {
                         Debug.Log(1);
@@ -240,13 +253,14 @@ public class Boss : MonoBehaviour
                     break;
                 case 3:
                 case 4:
+                    if (x == y) break;
                     //transform.Rotate(new Vector3(0, 0, 10 * currentTime) * 10 * Time.deltaTime);
                     StartCoroutine("Attack3");
                     yield return new WaitForSeconds(4f);
                     break;
                 case 5:
                 case 6:
-
+                    if (x == y) break;
                     transform.Rotate(new Vector3(0, 0, 10 * currentTime) * 10 * Time.deltaTime);
                     StartCoroutine("Attack4");
                     yield return new WaitForSeconds(4.5f);
@@ -254,6 +268,7 @@ public class Boss : MonoBehaviour
                     break;
                 case 7:
                 case 8:
+                    if (x == y) break;
                     b = 1;
                     StartCoroutine(Rotate2());
                     StartCoroutine("Attack5");

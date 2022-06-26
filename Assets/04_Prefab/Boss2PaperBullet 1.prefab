@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7860801921676023112}
   - component: {fileID: -8617682444694010139}
   - component: {fileID: -8598201760691856031}
-  m_Layer: 17
+  m_Layer: 20
   m_Name: Boss2PaperBullet 1
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
