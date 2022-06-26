@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 703066713356783352}
   - component: {fileID: -7860801921676023112}
   - component: {fileID: -8617682444694010139}
+  - component: {fileID: -8598201760691856031}
   m_Layer: 17
   m_Name: Boss2PaperBullet 1
   m_TagString: EnemyBullet
@@ -133,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee31c2430421f3e4795ce403c68ed355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 8
   moveDir: {x: 0, y: 1, z: 0}
 --- !u!58 &-8617682444694010139
 CircleCollider2D:
@@ -151,3 +152,16 @@ CircleCollider2D:
   m_Offset: {x: 0.059173763, y: -0.100000024}
   serializedVersion: 2
   m_Radius: 0.65917367
+--- !u!114 &-8598201760691856031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8483380154467873319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811d6553705ccc44ea83d72b8e03365d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 

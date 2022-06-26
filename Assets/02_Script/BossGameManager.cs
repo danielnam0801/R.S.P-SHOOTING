@@ -19,8 +19,8 @@ public class BossGameManager : MonoBehaviour
 
     IEnumerator Fade()
     {
-        gamePanel.SetActive(true);
-        player_1.SetActive(true);
+        //gamePanel.SetActive(true);
+        //player_1.SetActive(true);
 
         //Panel.gameObject.SetActive(true);
         Color alpha = Panel.color;
@@ -45,8 +45,6 @@ public class BossGameManager : MonoBehaviour
             Panel.color = alpha;
             yield return null;
         }
-
-        Panel.gameObject.SetActive(false);
     }
     // Update is called once per frame
     void Update()

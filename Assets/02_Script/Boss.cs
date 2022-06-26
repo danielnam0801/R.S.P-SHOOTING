@@ -4,18 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
-public enum BossType { Dash, Fire1, Fire2, Fire3 }
 
 public class Boss : MonoBehaviour
 {
+    [SerializeField]
+    GameObject bossDie;
     [SerializeField]
     GameObject[] BbEnemy;
     [SerializeField]
     GameObject[] B2bEnemy;
     [SerializeField]
     float speed = 2f;
-    [SerializeField]
-    float bossHp = 100;
+    public float bossHp = 100;
     float maxHp;
     [SerializeField]
     int score = 10000;
@@ -44,9 +44,16 @@ public class Boss : MonoBehaviour
     public Sprite[] sprites;
     SpriteRenderer spriteRenderer;
     Tilemap tilemap;
+    Text playerHP;
+    Image boss;
+    BossExplosion bossEx;
+
 
     private void Awake()
     {
+        //boss = GameObject.Find("BossTxt").GetComponent<Image>();
+        playerHP = GameObject.Find("5/10").GetComponent<Text>();
+        Panel.enabled = false;
         d = 0;
         tilemap = GameObject.Find("Tilemap").GetComponent<Tilemap>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -63,11 +70,12 @@ public class Boss : MonoBehaviour
         //spriteRenderer = GetComponent<SpriteRenderer>();
         //StartCoroutine("BossAttack");
 
+        bossEx = GetComponent<BossExplosion>();
     }
 
     private void Start()
     {
-        animeStart = 1; 
+        animeStart = 1;
         maxHp = bossHp;
         StartCoroutine(Phase1());
         StartCoroutine(Phase2());
@@ -84,35 +92,47 @@ public class Boss : MonoBehaviour
         if (d == 0)
         {
             transform.Rotate(0, 0, 0.3f);
- 
-                       
+
+
         }
-        if (bossHp <= 50)
+        if (bossHp <= 200)
         {
             //작동안함
-            if(animeStart == 1)
+            if (animeStart == 1)
             {
                 StartCoroutine(FadeFlow());
             }
-            if(animeStart == 0)
+            if (animeStart == 0)
             {
                 StopCoroutine("FadeFlow");
             }
-            spriteRenderer.sprite = sprites[1];
-            tilemap.color = new Color(1, 0.246f, 0, 1);
+
             isPhase1 = false;
             StopCoroutine(Phase1());
             Debug.Log("Phase2");
-            isPhase2 = true;    
+            playerHP.color = Color.white;
+            isPhase2 = true;
             transform.Rotate(0, 0, 0.5f);
+
         }
-        
+        if (bossHp == 0)
+        {
+            //bossDie.SetActive(true);
+            //PlayerPrefs.SetFloat("BossPositionX", transform.position.x);
+            //PlayerPrefs.SetFloat("BossPositionY", transform.position.y);
+
+        }
+
         //BossMove();
     }
     private void LateUpdate()
     {
+        if (bossHp == 0)
+        {
+            Destroy(gameObject);
+        }
         bossHealthBar.localScale = new Vector3((bossHp / maxHp), 1, 1);
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -45,45), Mathf.Clamp(transform.position.y, -45, 45));
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -50, 50), Mathf.Clamp(transform.position.y, -50, 50));
     }
 
 
@@ -126,10 +146,29 @@ public class Boss : MonoBehaviour
             switch (x)
             {
                 case 0:
+                    if (degree.magnitude <= 13)
+                    {
+                        Debug.Log(1);
+                        d = 1;
+                        StartCoroutine(Rotate());
+                        yield return new WaitForSeconds(0.8f);
+                        degree = targetTrm.position - transform.position;
+                        StartCoroutine(Dash(degree));
+                        yield return new WaitForSeconds(0.55f);
+                        rb.velocity = Vector3.zero;
+                        yield return new WaitForSeconds(0.8f);
+                        degree = targetTrm.position - transform.position;
+                        StartCoroutine(Dash(degree));
+                        yield return new WaitForSeconds(0.55f);
+                        rb.velocity = Vector3.zero;
+                        d = 0;
+                        yield return new WaitForSeconds(1f);
+                    }
+                    break;
                 case 1:
                 case 2:
                     Debug.Log("입력");
-                    if (degree.magnitude <= 8)
+                    if (degree.magnitude <= 13)
                     {
                         Debug.Log(1);
                         d = 1;
@@ -148,24 +187,24 @@ public class Boss : MonoBehaviour
                 case 4:
                     //BossMove();
                     StartCoroutine("Attack1");
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(2.5f);
                     break;
                 case 5:
                 case 6:
                     //BossMove();
                     StartCoroutine("Attack2");
-                    yield return new WaitForSeconds(10f);
+                    yield return new WaitForSeconds(7f);
                     break;
             }
-            yield return new WaitForSeconds(3f);
         }
     }
     IEnumerator Phase2()
     {
-       
+
         yield return new WaitUntil(() => isPhase2 == true);
+        yield return new WaitForSeconds(3f);
         Debug.Log("wpqkdsjf");
-        while (isPhase2)    
+        while (isPhase2)
         {
             BossMove();
             int x = Random.Range(1, 8);
@@ -173,7 +212,7 @@ public class Boss : MonoBehaviour
             {
                 case 1:
                 case 2:
-                    if (degree.magnitude <= 8)
+                    if (degree.magnitude <= 13)
                     {
                         Debug.Log(1);
                         b = 1;
@@ -195,49 +234,56 @@ public class Boss : MonoBehaviour
                         rb.velocity = Vector3.zero;
 
                         b = 0;
-                        yield return new WaitForSeconds(1f);
+                        yield return new WaitForSeconds(0.5f);
                     }
 
                     break;
                 case 3:
                 case 4:
-                    
+                    //transform.Rotate(new Vector3(0, 0, 10 * currentTime) * 10 * Time.deltaTime);
                     StartCoroutine("Attack3");
                     yield return new WaitForSeconds(4f);
                     break;
                 case 5:
                 case 6:
-                    
+
+                    transform.Rotate(new Vector3(0, 0, 10 * currentTime) * 10 * Time.deltaTime);
                     StartCoroutine("Attack4");
-                    yield return new WaitForSeconds(8f);
+                    yield return new WaitForSeconds(4.5f);
+                    transform.Rotate(new Vector3(0, 0, 0));
                     break;
                 case 7:
+                case 8:
                     b = 1;
                     StartCoroutine(Rotate2());
                     StartCoroutine("Attack5");
                     degree = targetTrm.position - transform.position;
 
                     yield return new WaitForSeconds(1f);
-                    
+
                     StartCoroutine(Dash2(degree));
-                    yield return new WaitForSeconds(3f);
+                    yield return new WaitForSeconds(2.5f);
                     rb.velocity = Vector3.zero;
                     b = 0;
-                    yield return new WaitForSeconds(3f);
-                    
+                    yield return new WaitForSeconds(4.5f);
+
                     break;
-                    
+
             }
-       
+
         }
     }
 
     void BossMove()
     {
         degree = targetTrm.position - transform.position;
-        if (degree.magnitude >= 5)
+        if (degree.magnitude >= 8)
         {
-            rb.velocity = degree.normalized * speed;
+            rb.velocity = degree.normalized * 3.5f;
+        }
+        else
+        {
+            rb.velocity = degree.normalized * 2;
         }
         //else if (degree.magnitude < 3)
         //{
@@ -276,13 +322,13 @@ public class Boss : MonoBehaviour
     }
     IEnumerator Attack1()
     {
-        for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
             int z = Random.Range(0, 3);
             GameObject Bbenemy1 = Instantiate(BbEnemy[z], transform.position, transform.rotation);
             yield return new WaitForSeconds(0.7f);
         }
-        
+
         yield return new WaitForSeconds(3f);
     }
 
@@ -329,7 +375,7 @@ public class Boss : MonoBehaviour
             }
         }
 
-        
+
     }
     IEnumerator Rotate2()
     {
@@ -344,13 +390,13 @@ public class Boss : MonoBehaviour
                 // yield return new WaitForSeconds(3f);
             }
         }
-        
-        
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {   
-        if(collision.gameObject.layer == 18)
+    {
+        if (collision.gameObject.layer == 18)
         {
             Debug.Log(bossHp);
             Destroy(collision.gameObject);
@@ -370,18 +416,19 @@ public class Boss : MonoBehaviour
         //    PlayerPrefs.SetInt("PlayerHP", player.health);
         //    StartCoroutine(FadeFlow());
         //}
-        if(bossHp == 0)
+        if (bossHp == 0)
         {
             bossHealthBar.localScale = new Vector3((bossHp / maxHp), 1, 1);
-            isPhase2 = false;
-            StopCoroutine(Phase2());
-            
-            Destroy(gameObject);
+            Debug.Log(bossDie.name);
+            PlayerPrefs.SetFloat("BossPositionX", transform.position.x);
+            PlayerPrefs.SetFloat("BossPositionY", transform.position.y);
+            bossDie.SetActive(true);
         }
+
     }
     IEnumerator FadeFlow()
     {
-        
+        Panel.enabled = true;
         Color alpha = Panel.color;
         while (alpha.a < 1f)
         {
@@ -390,9 +437,36 @@ public class Boss : MonoBehaviour
             Panel.color = alpha;
             yield return null;
         }
+        spriteRenderer.sprite = sprites[1];
+        tilemap.color = new Color(1, 0.5f, 0.5f, 1);
+
+        yield return new WaitForSeconds(0.5f);
+        ntime = 0f;
+        while (alpha.a > 0f)
+        {
+            ntime += Time.deltaTime / ftime;
+            alpha.a = Mathf.Lerp(1, 0, ntime);
+            Panel.color = alpha;
+            yield return null;
+        }
+        alpha.a = 0;
+        tilemap.color = new Color(0.7f, 0.35f, 0.35f, 1);
+        yield return new WaitForSeconds(0.5f);
+
+        //tilemap.color = new Color(0.7f, 0.35f, 0.35f, 1);
+        //yield return new WaitForSeconds(0.5f);
+        //alpha.a = 1;
+        //tilemap.color = new Color(1, 1f, 1f, 1);
+        //yield return new WaitForSeconds(0.5f);
+        //tilemap.color = new Color(0.7f, 0.35f, 0.35f, 1);
+        //alpha.a = 0;
+        //yield return new WaitForSeconds(0.5f);
+        //alpha.a = 1;
+        //tilemap.color = new Color(1, 1f, 1f, 1);
+        //yield return new WaitForSeconds(0.5f);
+        //alpha.a = 0;
         animeStart = 0;
-        yield return new WaitForSeconds(1f);
-        
+
     }
     IEnumerator spritehChange()
     {

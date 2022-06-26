@@ -10,9 +10,10 @@ public class Enemy : MonoBehaviour
     public int nScore = 100;
     public int gScore = 300;
     public int sScore = 600;
+    public float bossSpeed = 5;
     float nSpeed = 4;
     float gSpeed = 5;
-    float sSpeed = 3;
+    float sSpeed = 4;
    
     public Sprite[] sprites;
     Rigidbody2D rb;
@@ -38,7 +39,23 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        
+        if(gameObject.layer == 19)
+        {
+            dir = transform.position - targetTrm.transform.position;
+            dir.Normalize();
+            float rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, rotation + 90f);
+            degree = targetTrm.position - transform.position;
+            if (degree.magnitude >= 0)
+            {
+                rb.velocity = degree.normalized * bossSpeed;
+                //transform.position += degree * sSpeed * Time.deltaTime;
+            }
+            else
+            {
+                rb.velocity = Vector2.zero;
+            }
+        }
         if(gameObject.layer == 14)//gunENemy도 할꺼면 레이어 15로 바꾸기
         {
             EnemyRotation();

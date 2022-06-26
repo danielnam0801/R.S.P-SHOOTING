@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 138424905253822326}
   - component: {fileID: 8797193202608673343}
   - component: {fileID: 9050490169929480731}
-  m_Layer: 13
+  - component: {fileID: 4823186666641071212}
+  m_Layer: 19
   m_Name: BossScissorEnemy 1
   m_TagString: SEnemy
   m_Icon: {fileID: 0}
@@ -145,12 +146,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b9b3a695714f34e9ee93d8e01fd1a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 1
   maxHealth: 0
   nScore: 100
   gScore: 300
   sScore: 300
-  sSpeed: 4
+  bossSpeed: 8
   sprites: []
 --- !u!61 &9050490169929480731
 BoxCollider2D:
@@ -178,3 +179,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.29416195, y: 1.0842723}
   m_EdgeRadius: 0
+--- !u!114 &4823186666641071212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4428701259928942886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811d6553705ccc44ea83d72b8e03365d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 

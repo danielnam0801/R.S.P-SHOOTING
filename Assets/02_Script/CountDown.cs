@@ -62,10 +62,11 @@ public class CountDown : MonoBehaviour
 
             }
 
-            if(time <= 0)
+            if(time == 0)
             {
+                player_2.gameObject.layer = 10;
                 PlayerPrefs.SetInt("Health", player_2.health);
-                PlayerPrefs.SetInt("Score1", player_2.Score);
+                PlayerPrefs.SetInt("Score3", player_2.Score);
                 if(player_2.transform.position.x <= 28.5 || transform.position.x >= -28.5)
                 {
                      PlayerPrefs.SetFloat("positionX", player_2.transform.position.x);
@@ -120,6 +121,7 @@ public class CountDown : MonoBehaviour
             }
             if (time <= -1)
             {
+                player_2.gameObject.layer = 11;
                 SceneManager.LoadScene("BossScene");
                 break;
             }

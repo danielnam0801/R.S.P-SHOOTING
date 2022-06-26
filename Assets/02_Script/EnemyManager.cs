@@ -68,7 +68,7 @@ public class EnemyManager : MonoBehaviour
         int specialEnemy = Random.Range(0, 3);
         int spawnPercent = Random.Range(0, 100);
 
-        if(spawnPercent < 85)
+        if(spawnPercent < 80)
         {
             GameObject enemy = Instantiate(enemies[normalEnemy], transform.position, Quaternion.identity);
         }

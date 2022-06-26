@@ -9,7 +9,6 @@ public class Player2 : MonoBehaviour
     //[SerializeField]
     //private StageData stageData;
     //private Movement movement;
-    Text scoreText;
     public Image weapon1;
     public Image weapon2;
     public Image weapon3;
@@ -17,6 +16,7 @@ public class Player2 : MonoBehaviour
     public Image num1;
     public Image num2;
     public GameObject[] weapons;
+    public Text score1;
     Weapon equipWeapon;
     SpriteRenderer spriteRenderer;
     PlayerAction action;
@@ -44,13 +44,12 @@ public class Player2 : MonoBehaviour
 
     private void Awake()
     {
+        gameObject.layer = 11;
         transform.position = new Vector3(PlayerPrefs.GetFloat("positionX"), PlayerPrefs.GetFloat("positionY"),0);
         health = PlayerPrefs.GetInt("Health");
         spriteRenderer = GetComponent<SpriteRenderer>();
         action = GameObject.Find("Player").GetComponent<PlayerAction>();
-        scoreText = GameObject.Find("Score1").GetComponent<Text>();
-        Debug.Log(PlayerPrefs.GetInt("Score1"));
-        scoreText.text = "Score : " + PlayerPrefs.GetInt("Score1");
+        Debug.Log(PlayerPrefs.GetInt("Score3"));
         num.color = new Color(0.5f, 0.5f, 0.5f, 1);
         num1.color = new Color(0.5f, 0.5f, 0.5f, 1);
         num2.color = new Color(0.5f, 0.5f, 0.5f, 1);
@@ -69,7 +68,7 @@ public class Player2 : MonoBehaviour
     private void LateUpdate()
     {
         playerHealthTxt.text = ": " + health.ToString();
-        scoreText.text = "Score : " + Score;
+        score1.text = "Score : " + ((int)PlayerPrefs.GetInt("Score3") + score).ToString();
     }
     void GetInput()
     {
@@ -183,6 +182,12 @@ public class Player2 : MonoBehaviour
             StopCoroutine("OnDamage");
             StartCoroutine("OnDamage");
         }
+        if (collision.gameObject.layer == 19)
+        {
+            Destroy(collision.gameObject);
+            StopCoroutine("OnDamage");
+            StartCoroutine("OnDamage");
+        }
     }
     public void DieEvent()
     {
@@ -198,9 +203,9 @@ public class Player2 : MonoBehaviour
         Debug.Log(health);
         if (health <= 0)
         {
-
+            DieEvent();
         }
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 2; i++)
         {
             spriteRenderer.color = new Color(1, 1, 1, 0.4f);
             yield return new WaitForSeconds(0.2f);
@@ -212,7 +217,7 @@ public class Player2 : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         spriteRenderer.color = new Color(1, 1, 1, 1);
 
-        action.speed = 3f;
+        action.speed = 4f;
         gameObject.layer = 11;
 
     }

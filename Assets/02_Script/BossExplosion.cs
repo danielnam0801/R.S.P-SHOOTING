@@ -5,38 +5,50 @@ using UnityEngine.SceneManagement;
 
 public class BossExplosion : MonoBehaviour
 {
-    private Player player;
-    private string SceneName;
-    private int currentScore;
-    private int besScore;
 
-    public void SetUp(Player player, string sceneName)
+    Player2 player;
+    [SerializeField]
+    GameObject[] bossExplosion;
+    //[SerializeField]
+    //GameObject bosss;
+    float x;
+    float y;
+
+    private void Start()
     {
-        this.player = player;
-        this.SceneName = sceneName;
+        
+    }
+
+    private void Awake()
+    {
+        player = GameObject.Find("Player").GetComponent<Player2>();
+        x = PlayerPrefs.GetFloat("BossPositionX", 100);
+        y = PlayerPrefs.GetFloat("BossPositionY", 100);
         player.Score += 10000;
-        //PlayerPrefs.SetInt("Score", currentScore);
-        //if (currentScore > besScore)
-        //{
-        //    besScore = currentScore;
-        //    PlayerPrefs.SetInt("Best Score", besScore);
-        //}
-        SceneManager.LoadScene(SceneName);
+        StartCoroutine(explosion());
     }
-
-    private void OnDestroy()
+    public void Update()
     {
-
+        transform.Rotate(0, 0, 5f);
+        transform.position = new Vector3(x, y, 0);
     }
-    // Start is called before the first frame update
-    void Start()
+    IEnumerator explosion()
     {
-
+        yield return new WaitForSeconds(0.1f);
+        Debug.Log("ehoehoehoheo");
+        Instantiate(bossExplosion[0], new Vector3(transform.position.x + 2, transform.position.y - 2, 0), Quaternion.identity);
+        yield return new WaitForSeconds(0.3f);
+        Instantiate(bossExplosion[1], new Vector3(transform.position.x - 2, transform.position.y + 2, 0), Quaternion.identity);
+        yield return new WaitForSeconds(0.3f);
+        Instantiate(bossExplosion[2], new Vector3(transform.position.x + 0, transform.position.y  -2, 0), Quaternion.identity);
+        yield return new WaitForSeconds(0.3f);
+        Instantiate(bossExplosion[0], new Vector3(transform.position.x + 1, transform.position.y - 1, 0), Quaternion.identity);
+        yield return new WaitForSeconds(0.3f);
+        Instantiate(bossExplosion[1], new Vector3(transform.position.x - 1, transform.position.y, 0), Quaternion.identity);
+        yield return new WaitForSeconds(0.3f);
+        Instantiate(bossExplosion[2], new Vector3(transform.position.x + 1, transform.position.y + 1, 0), Quaternion.identity);
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("Clear");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
 }

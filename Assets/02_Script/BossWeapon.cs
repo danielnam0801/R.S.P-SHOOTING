@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AttackType { CircleFire = 0, SingleFireToCenterPosition }
 public class BossWeapon : MonoBehaviour
 {
     [SerializeField]
@@ -91,7 +90,7 @@ public class BossWeapon : MonoBehaviour
     }
     private IEnumerator CircleFire()
     {
-        float attackRate = 0.7f;
+        float attackRate = 0.5f;
         int count = 24;
         float intervalAngle = 360 / count;
         float weightAngle = 0;
@@ -100,7 +99,7 @@ public class BossWeapon : MonoBehaviour
         
         for(int j = 0; j<10; j++)
         {
-            int rand = Random.Range(1,2);
+            int rand = Random.Range(0,4);
             for (int i = 0; i < 24; i++)
             {
                 int ran = Random.Range(0, 3);

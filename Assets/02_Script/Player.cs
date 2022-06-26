@@ -177,11 +177,17 @@ public class Player : MonoBehaviour
             StopCoroutine("OnDamage");
             StartCoroutine("OnDamage");
         }
+        if(collision.gameObject.layer == 19)
+        {
+            Destroy(collision.gameObject);
+            StopCoroutine("OnDamage");
+            StartCoroutine("OnDamage");
+        }
     }
     public void DieEvent()
     {
         SceneManager.LoadScene("GameOver");
-        PlayerPrefs.SetInt("Score", score);
+        PlayerPrefs.SetInt("Score1", score);
     }
 
     IEnumerator OnDamage()
@@ -192,9 +198,9 @@ public class Player : MonoBehaviour
         Debug.Log(health);
         if (health <= 0)
         {
-            
+            DieEvent();
         }
-        for (int i=0; i < 4; i++)
+        for (int i=0; i < 2; i++)
         {
             spriteRenderer.color = new Color(1, 1, 1, 0.4f);
             yield return new WaitForSeconds(0.2f);
@@ -206,7 +212,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         spriteRenderer.color = new Color(1, 1, 1, 1);
 
-        action.speed = 3f;
+        action.speed = 4f;
         gameObject.layer = 11;
         
     }

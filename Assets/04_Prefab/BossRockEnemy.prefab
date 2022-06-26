@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 5314530021800399953}
   - component: {fileID: 6810877496446279418}
   - component: {fileID: -5481771543331587535}
-  m_Layer: 13
+  - component: {fileID: -1678322777949294973}
+  m_Layer: 19
   m_Name: BossRockEnemy
   m_TagString: REnemy
   m_Icon: {fileID: 0}
@@ -144,10 +145,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b9b3a695714f34e9ee93d8e01fd1a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 1
   maxHealth: 0
   nScore: 100
   gScore: 300
   sScore: 300
-  sSpeed: 4
+  bossSpeed: 6
   sprites: []
+--- !u!114 &-1678322777949294973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6631179875318413031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811d6553705ccc44ea83d72b8e03365d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 
