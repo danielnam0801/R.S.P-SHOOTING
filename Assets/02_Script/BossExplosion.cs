@@ -9,6 +9,10 @@ public class BossExplosion : MonoBehaviour
     Player2 player;
     [SerializeField]
     GameObject[] bossExplosion;
+    [SerializeField]
+    GameObject cam;
+    [SerializeField]
+    GameObject playercam;
     //[SerializeField]
     //GameObject bosss;
     float x;
@@ -21,10 +25,15 @@ public class BossExplosion : MonoBehaviour
 
     private void Awake()
     {
+        playercam.gameObject.SetActive(false);
+        cam.gameObject.SetActive(true);
+        
         player = GameObject.Find("Player").GetComponent<Player2>();
         x = PlayerPrefs.GetFloat("BossPositionX", 100);
         y = PlayerPrefs.GetFloat("BossPositionY", 100);
-        player.Score += 10000;
+        PlayerPrefs.SetInt("LastScore", PlayerPrefs.GetInt("Score3")+ 200000);
+        cam.GetComponent<Camera>().transform.position = new Vector3(x,y,-10);
+        //cam.transform.position = new Vector3(x, y, 0);
         StartCoroutine(explosion());
     }
     public void Update()

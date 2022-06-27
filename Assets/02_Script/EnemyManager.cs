@@ -8,7 +8,7 @@ public class EnemyManager : MonoBehaviour
     GameObject[] enemies;
     //[SerializeField]
     //public Transform[] spawnPoints;
-    public float maxSpawnTime = 5f;
+    public float maxSpawnTime = 10f;
     public float curSpawnTime;
     bool active;
     GameObject player;
@@ -52,7 +52,11 @@ public class EnemyManager : MonoBehaviour
                 if (curSpawnTime > maxSpawnTime)
                 {
                     SpawnEnemy();
-                    maxSpawnTime = Random.Range(3f, 5f);
+                    maxSpawnTime = 10f;
+                    if (count.time < 30)
+                    {
+                        maxSpawnTime = 8f;
+                    }
                     curSpawnTime = 0;
                 }
             }

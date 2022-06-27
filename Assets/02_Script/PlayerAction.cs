@@ -59,6 +59,6 @@ public class PlayerAction : MonoBehaviour
     private void FixedUpdate()
     {
         //Vector2 moveVec = isHorizonMove ? new Vector2(h, 0) : new Vector2(v,);
-        rigid.velocity = new Vector2(h,v)* speed;
+        rigid.velocity = new Vector2(h,v).normalized * speed;
     }
 }

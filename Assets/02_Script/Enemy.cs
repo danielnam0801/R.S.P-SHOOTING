@@ -7,13 +7,13 @@ public class Enemy : MonoBehaviour
 {
     public int health;
     public int maxHealth;
-    public int nScore = 100;
-    public int gScore = 300;
-    public int sScore = 600;
+    private int nScore = 1250;
+    private int gScore = 2700;
+    private int sScore = 4320;
     public float bossSpeed = 5;
-    float nSpeed = 4;
-    float gSpeed = 5;
-    float sSpeed = 4;
+    float nSpeed = 4.8f;
+    float gSpeed = 5.2f;
+    float sSpeed = 4.8f;
    
     public Sprite[] sprites;
     Rigidbody2D rb;
@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour
     }
     void OnHit(int dmg)
     {
-        health -= dmg;
+        health -= 1;
        // spriteRenderer.sprite = sprites[1];
         //Invoke("ReturnSprite", 0.1f);
         if(health <= 0)
@@ -177,6 +177,7 @@ public class Enemy : MonoBehaviour
             }
             else if (collision.gameObject.tag == "SBullet")
             {
+                health += 1;
                 Destroy(collision.gameObject);
             }
 
@@ -191,6 +192,7 @@ public class Enemy : MonoBehaviour
             }
             else if (collision.gameObject.tag == "RBullet")
             {
+                health += 1;
                 Destroy(collision.gameObject);
             }
         }
@@ -204,6 +206,7 @@ public class Enemy : MonoBehaviour
             }
             else if (collision.gameObject.tag == "PBullet")
             {
+                health += 1;
                 Destroy(collision.gameObject);
             }
         }

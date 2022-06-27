@@ -42,6 +42,7 @@ public class Boss : MonoBehaviour
     public Image Panel;
     int animeStart = 0;
     public Sprite[] sprites;
+    public GameObject panel;
     SpriteRenderer spriteRenderer;
     Tilemap tilemap;
     Text playerHP;
@@ -98,7 +99,7 @@ public class Boss : MonoBehaviour
 
 
         }
-        if (bossHp <= 200)
+        if (bossHp <= 195)
         {
             //작동안함
             if (animeStart == 1)
@@ -132,6 +133,7 @@ public class Boss : MonoBehaviour
     {
         if (bossHp == 0)
         {
+            StopAllCoroutines();
             Destroy(gameObject);
         }
         bossHealthBar.localScale = new Vector3((bossHp / maxHp), 1, 1);
@@ -433,11 +435,14 @@ public class Boss : MonoBehaviour
         //}
         if (bossHp == 0)
         {
+            //player.gameObject.layer = 10;
             bossHealthBar.localScale = new Vector3((bossHp / maxHp), 1, 1);
             Debug.Log(bossDie.name);
             PlayerPrefs.SetFloat("BossPositionX", transform.position.x);
             PlayerPrefs.SetFloat("BossPositionY", transform.position.y);
             bossDie.SetActive(true);
+            panel.SetActive(false);
+            Destroy(gameObject);
         }
 
     }

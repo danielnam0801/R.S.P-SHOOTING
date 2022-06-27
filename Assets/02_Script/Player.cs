@@ -80,6 +80,12 @@ public class Player : MonoBehaviour
 
     void Swap()
     {
+        if (sDown1)
+            rightClick = 1;
+        if(sDown2)
+            rightClick = 2;
+        if(sDown3)
+            rightClick = 3;
         if (Input.GetMouseButtonDown(1))
         {
             rightClick++;
@@ -212,8 +218,8 @@ public class Player : MonoBehaviour
     }
     public void DieEvent()
     {
-        SceneManager.LoadScene("Clear");
-        PlayerPrefs.SetInt("Score1", score);
+        PlayerPrefs.SetInt("Score3", score);
+        SceneManager.LoadScene("GameOver");
     }
 
     IEnumerator OnDamage()
@@ -238,7 +244,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         spriteRenderer.color = new Color(1, 1, 1, 1);
 
-        action.speed = 4f;
+        action.speed = 5f;
         gameObject.layer = 11;
         
     }

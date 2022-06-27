@@ -19,17 +19,17 @@ public class MenuButtonEvent : MonoBehaviour
     public void TipButtonClick()
     {
         Panel.gameObject.SetActive(true);
-        Panel.gameObject.transform.DOScale(1, 1);
+        Panel.gameObject.transform.DOScale(0.95f, 0.7f);
     }
 
-    void CloseButtonClick()
+    public void CloseButtonClick()
     {
         StartCoroutine("Close");
     }
     IEnumerator Close()
     {
-        Panel.gameObject.transform.DOScale(0, 1);
-        yield return new WaitForSeconds(0.8f);
+        Panel.gameObject.transform.DOScale(0, 0.5f);
+        yield return new WaitForSeconds(0.5f);
         Panel.gameObject.SetActive(false);
     }
 

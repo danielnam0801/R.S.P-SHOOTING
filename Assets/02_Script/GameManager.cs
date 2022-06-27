@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public Text playerHealthTxt;
     //public RectTransform bossHealthBar;
 
+    Image tip;
+    Text tipText;
     Image Button;
     Image image;
     Text text;
@@ -48,6 +50,10 @@ public class GameManager : MonoBehaviour
         image.enabled = false;
         text = GameObject.Find("Text").GetComponent<Text>();
         text.enabled = false;
+        tip = GameObject.Find("TipButton").GetComponent<Image>();
+        tip.enabled = false;
+        tipText = GameObject.Find("Text1").GetComponent<Text>();
+        tipText.enabled = false;
         Color alpha = Panel.color;
         while (alpha.a < 1f)
 

@@ -151,7 +151,7 @@ MonoBehaviour:
   nScore: 100
   gScore: 300
   sScore: 300
-  bossSpeed: 8
+  bossSpeed: 6.5
   sprites: []
 --- !u!61 &9050490169929480731
 BoxCollider2D:
