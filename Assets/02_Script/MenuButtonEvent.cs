@@ -9,6 +9,7 @@ public class MenuButtonEvent : MonoBehaviour
     Image Panel;
     [SerializeField]
     Button close;
+    public AudioSource click;
 
     // Start is called before the first frame update
     void Start()
@@ -18,16 +19,23 @@ public class MenuButtonEvent : MonoBehaviour
 
     public void TipButtonClick()
     {
+        click.Play();
+        StartCoroutine(Panel2());
+    }
+    IEnumerator Panel2()
+    {
+        yield return new WaitForSeconds(0.1f);
         Panel.gameObject.SetActive(true);
         Panel.gameObject.transform.DOScale(0.95f, 0.7f);
     }
-
     public void CloseButtonClick()
     {
+        click.Play();
         StartCoroutine("Close");
     }
     IEnumerator Close()
     {
+        yield return new WaitForSeconds(0.1f);
         Panel.gameObject.transform.DOScale(0, 0.5f);
         yield return new WaitForSeconds(0.5f);
         Panel.gameObject.SetActive(false);

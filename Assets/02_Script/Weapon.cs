@@ -61,13 +61,22 @@ public class Weapon : MonoBehaviour
         //obj.transform.rotation = transform.rotation;
 
         //bulletFactory = Instantiate(rock, firePosition.transform.position, Quaternion.identity);
-        bulletFactory = Rpooler.SpawnObject(transform.position , Quaternion.identity);
+        //GameObject clone;
+        //string str = string.Empty;
+        //clone = PoolingManager._Instance.PopObj(str);
+        ////bulletFactory = Rpooler.SpawnObject(transform.position , Quaternion.identity);
+        //clone.gameObject.GetComponent<Bullet>().Shoot(dir);
+        bulletFactory = Rpooler.SpawnObject(transform.position, Quaternion.identity);
         bulletFactory.gameObject.GetComponent<Bullet>().Shoot(dir);
         yield return new WaitForSeconds(rate);
     }
 
     IEnumerator ScissorSpawn()
     {
+        //GameObject clone;
+        //string str = string.Empty;
+        //clone = PoolingManager._Instance.PopObj(str);
+        //clone.gameObject.GetComponent<Bullet>().Shoot(dir);
         bulletFactory = Spooler.SpawnObject(transform.position, Quaternion.identity);
         bulletFactory.gameObject.GetComponent<Bullet>().Shoot(dir);
         yield return new WaitForSeconds(rate);
@@ -75,6 +84,9 @@ public class Weapon : MonoBehaviour
 
     IEnumerator PaperSpawn()
     {
+        //GameObject clone;
+        //string str = string.Empty;
+        //clone = PoolingManager._Instance.PopObj(str);
         bulletFactory = Ppooler.SpawnObject(transform.position, Quaternion.identity);
         bulletFactory.gameObject.GetComponent<Bullet>().Shoot(dir);
         yield return new WaitForSeconds(rate);

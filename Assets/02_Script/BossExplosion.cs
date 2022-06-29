@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class BossExplosion : MonoBehaviour
 {
-
+    //[SerializeField]
+    
     Player2 player;
     [SerializeField]
     GameObject[] bossExplosion;
@@ -25,10 +26,12 @@ public class BossExplosion : MonoBehaviour
 
     private void Awake()
     {
+        
         playercam.gameObject.SetActive(false);
         cam.gameObject.SetActive(true);
         
         player = GameObject.Find("Player").GetComponent<Player2>();
+        player.gameObject.layer = 10;
         x = PlayerPrefs.GetFloat("BossPositionX", 100);
         y = PlayerPrefs.GetFloat("BossPositionY", 100);
         PlayerPrefs.SetInt("LastScore", PlayerPrefs.GetInt("Score3")+ 200000);

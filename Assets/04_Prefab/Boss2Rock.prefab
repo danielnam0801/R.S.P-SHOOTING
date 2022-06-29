@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 101450645964647860}
   - component: {fileID: -7970264216814413314}
   - component: {fileID: 4777708302376308633}
-  - component: {fileID: 8823912833837238068}
+  - component: {fileID: 869970024448296335}
   m_Layer: 20
   m_Name: Boss2Rock
   m_TagString: EnemyBullet
@@ -152,7 +152,7 @@ CircleCollider2D:
   m_Offset: {x: 0.02364707, y: -0.02364713}
   serializedVersion: 2
   m_Radius: 0.55270576
---- !u!114 &8823912833837238068
+--- !u!114 &869970024448296335
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,4 +164,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 811d6553705ccc44ea83d72b8e03365d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
+  _name: Boss2Rock

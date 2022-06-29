@@ -187,7 +187,7 @@ public class Player : MonoBehaviour
         }
         if(collision.gameObject.layer == 20)
         {
-            collision.gameObject.GetComponent<PoolingObj>().PushObj();
+            collision.gameObject.GetComponent<PoolingObj>().PushObj1();
             StopCoroutine("OnDamage");
             StartCoroutine("OnDamage");
         }

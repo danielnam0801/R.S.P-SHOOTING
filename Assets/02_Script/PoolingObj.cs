@@ -18,8 +18,8 @@ public class PoolingObj : MonoBehaviour
     /// <summary>
     /// 오브젝트를 다시 비활성화 시키는 코드로 전송
     /// </summary>
-    public void PushObj()
+    public void PushObj1()
     {
-        PoolingManager._instance.PushObj(_name, this.gameObject);
+        PoolingManager._Instance.PushObj(_name, this.gameObject);
     }
 }

@@ -9,6 +9,7 @@ using UnityEngine.EventSystems;
 public class CountDown : MonoBehaviour
 {
     [SerializeField] Text countText;
+    [SerializeField] AudioSource backSound;
     public int time = 60;
     int min;
     int sec;
@@ -105,12 +106,11 @@ public class CountDown : MonoBehaviour
                 
                 Color alpha = Panel.color;
                 while (alpha.a < 1f)
-
                 {
-
                     ntime += Time.deltaTime / ftime;
                     alpha.a = Mathf.Lerp(0.0f, 1, ntime);
                     Panel.color = alpha;
+                    backSound.volume = Mathf.Lerp(1, 0, ntime);
                     yield return null;
                 }
                 //gamePanel.SetActive(true);

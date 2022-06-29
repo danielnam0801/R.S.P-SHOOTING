@@ -5,9 +5,11 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class ButtonEvent1 : MonoBehaviour
 {
+    [SerializeField] AudioSource audioSource;
 
     public void LoadScene(string sceneName)
     {
+        audioSource.Play();
         SceneManager.LoadScene(sceneName);
     }
     // Start is called before the first frame update

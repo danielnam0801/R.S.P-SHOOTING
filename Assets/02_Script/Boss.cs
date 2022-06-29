@@ -8,6 +8,12 @@ using UnityEngine.UI;
 public class Boss : MonoBehaviour
 {
     [SerializeField]
+    AudioSource transSound;
+    [SerializeField]
+    AudioClip backgroundClip;
+    [SerializeField]
+    AudioClip japClip;
+    [SerializeField]
     GameObject bossDie;
     [SerializeField]
     GameObject[] BbEnemy;
@@ -33,7 +39,7 @@ public class Boss : MonoBehaviour
     Vector3 degree;
     Player player;
     public RectTransform bossGroup;
-    public RectTransform bossHealthBar;
+    public Image bossHealthBar;
     //CountDown count;
     bool isRotate = false;
     SpriteRenderer change;
@@ -48,10 +54,12 @@ public class Boss : MonoBehaviour
     Text playerHP;
     Image boss;
     BossExplosion bossEx;
-    int x, y,temp;
+    int x, y, temp;
+    bool soundTrue = false;
 
     private void Awake()
     {
+
         x = 0;
         y = 0;
         temp = 0;
@@ -95,12 +103,18 @@ public class Boss : MonoBehaviour
     {
         if (d == 0)
         {
-            transform.Rotate(0, 0, 0.3f);
+            transform.Rotate(0, 0, 0.5f);
 
 
         }
-        if (bossHp <= 195)
+        if (bossHp <= 270)
         {
+
+            if (soundTrue == false)
+            {
+                StartCoroutine("Sound");
+            }
+
             //작동안함
             if (animeStart == 1)
             {
@@ -110,15 +124,34 @@ public class Boss : MonoBehaviour
             {
                 StopCoroutine("FadeFlow");
             }
-
             isPhase1 = false;
             StopCoroutine(Phase1());
             Debug.Log("Phase2");
             playerHP.color = Color.white;
             isPhase2 = true;
             transform.Rotate(0, 0, 0.5f);
-
+            
         }
+        //if (bossHp <= 155)
+        //{
+        //    transSound.pitch = 1.23f;
+        //}
+        //if (bossHp <= 120)
+        //{
+        //    transSound.pitch = 1.15f;
+        //}
+        //if (bossHp <= 90)
+        //{
+        //    transSound.pitch = 1.21f;
+        //}
+        //if (bossHp <= 60)
+        //{
+        //    transSound.pitch = 1.23f;
+        //}
+        //if(bossHp <= 30)
+        //{
+        //    transSound.pitch = 1.25f;
+        //}
         if (bossHp == 0)
         {
             //bossDie.SetActive(true);
@@ -129,6 +162,12 @@ public class Boss : MonoBehaviour
 
         //BossMove();
     }
+    private void ClipStart(AudioClip clip)
+    {
+        transSound.Stop();
+        transSound.clip = clip;
+        transSound.Play();
+    }
     private void LateUpdate()
     {
         if (bossHp == 0)
@@ -136,11 +175,19 @@ public class Boss : MonoBehaviour
             StopAllCoroutines();
             Destroy(gameObject);
         }
-        bossHealthBar.localScale = new Vector3((bossHp / maxHp), 1, 1);
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -50, 50), Mathf.Clamp(transform.position.y, -50, 50));
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -55, 55), Mathf.Clamp(transform.position.y, -55, 55));
     }
 
-
+    IEnumerator Sound()
+    {
+        //bossStart.Stop();
+        ClipStart(japClip);
+        yield return new WaitForSeconds(1f);
+        transSound.pitch = 1.1f;
+        ClipStart(backgroundClip);
+        soundTrue = true;
+    }
+    
     IEnumerator Phase1()
     {
         yield return new WaitForSeconds(2.5f);
@@ -424,6 +471,7 @@ public class Boss : MonoBehaviour
     public void OnDamageBoss()
     {
         bossHp -= 1;
+                bossHealthBar.fillAmount = bossHp / maxHp;
         //StopAllCoroutines();
         StopCoroutine(spritehChange());
         StartCoroutine(spritehChange());
@@ -435,8 +483,7 @@ public class Boss : MonoBehaviour
         //}
         if (bossHp == 0)
         {
-            //player.gameObject.layer = 10;
-            bossHealthBar.localScale = new Vector3((bossHp / maxHp), 1, 1);
+            bossHealthBar.fillAmount = 0 ;
             Debug.Log(bossDie.name);
             PlayerPrefs.SetFloat("BossPositionX", transform.position.x);
             PlayerPrefs.SetFloat("BossPositionY", transform.position.y);

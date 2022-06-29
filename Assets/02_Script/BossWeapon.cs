@@ -49,24 +49,24 @@ public class BossWeapon : MonoBehaviour
             for (int i = 0; i < 15; i++)
             {
                 int ran = Random.Range(0, 3);
-                //GameObject clone;
-                //string str = string.Empty;
-                //switch (rand)
-                //{
-                //    case 0:
-                //        str = "EnemyPaperBullet 1";
-                //        break;
-                //    case 1:
-                //        str = "EnemyRockBullet";
-                //        break;
-                //    case 2:
-                //        str = "EnemyScissorBullet";
-                //        break;
+                GameObject clone;
+                string str = string.Empty;
+                switch (ran)
+                {
+                    case 0:
+                        str = "EnemyPaperBullet 1";
+                        break;
+                    case 1:
+                        str = "EnemyRockBullet";
+                        break;
+                    case 2:
+                        str = "EnemyScissorBullet";
+                        break;
 
-                //}
-                //clone = PoolingManager._instance.PopObj(str);
+                }
+                clone = PoolingManager._Instance.PopObj(str);
 
-                GameObject clone = Instantiate(enemyProjectile[ran], transform.position, Quaternion.identity);
+                //GameObject clone = Instantiate(enemyProjectile[ran], transform.position, Quaternion.identity);
                 float angle = weightAngle + intervalAngle * i;
                 clone.transform.position = transform.position;
                 //clone.transform.position = new Vector2(Mathf.Cos(angle * Mathf.PI / 180.0f), Mathf.Sin(angle * Mathf.PI));
@@ -93,24 +93,24 @@ public class BossWeapon : MonoBehaviour
             for (int i = 0; i < 24; i++)
             {
                 int ran = Random.Range(0, 3);
-                //GameObject clone;
-                //string str = string.Empty;
-                //switch (rand)
-                //{
-                //    case 0:
-                //        str = "Boss2PaperBullet 1";
-                //        break;
-                //    case 1:
-                //        str = "Boss2Rock";
-                //        break;
-                //    case 2:
-                //        str = "Boss2Scissorl";
-                //        break;
+                GameObject clone;
+                string str = string.Empty;
+                switch (ran)
+                {
+                    case 0:
+                        str = "Boss2PaperBullet 1";
+                        break;
+                    case 1:
+                        str = "Boss2Rock";
+                        break;
+                    case 2:
+                        str = "Boss2Scissorl";
+                        break;
 
-                //}
-                //clone = PoolingManager._instance.PopObj(str);
+                }
+                clone = PoolingManager._Instance.PopObj(str);
 
-                GameObject clone = Instantiate(enemy2Projectile[ran], transform.position, Quaternion.identity);
+                //GameObject clone = Instantiate(enemy2Projectile[ran], transform.position, Quaternion.identity);
                 float angle = weightAngle + intervalAngle * i;
                 clone.transform.position = transform.position;
                 //clone.transform.position = new Vector2(Mathf.Cos(angle * Mathf.PI / 180.0f), Mathf.Sin(angle * Mathf.PI));
@@ -138,26 +138,27 @@ public class BossWeapon : MonoBehaviour
             {
                 int ran = Random.Range(0, 3);
                 //Pooling
-                //GameObject clone;
-                //string str = string.Empty;
-                //switch (rand)
-                //{
-                //    case 0:
-                //        str = "EnemyPaperBullet 1";
-                //        break;
-                //    case 1:
-                //        str = "EnemyRockBullet";
-                //        break;
-                //    case 2:
-                //        str = "EnemyScissorBullet";
-                //        break;
+                GameObject clone;
+                string str = string.Empty;
+                switch (ran)
+                {
+                    case 0:
+                        str = "EnemyPaperBullet 1";
+                        break;
+                    case 1:
+                        str = "EnemyRockBullet";
+                        break;
+                    case 2:
+                        str = "EnemyScissorBullet";
+                        break;
 
-                //}
-                //clone = PoolingManager._instance.PopObj(str);
-
-                GameObject clone = Instantiate(enemyProjectile[ran], transform.position, Quaternion.identity);
+                }
+                clone = PoolingManager._Instance.PopObj(str);
+                Debug.Log(clone);
+                //GameObject clone = Instantiate(enemyProjectile[ran], transform.position, Quaternion.identity);
                 float angle = weightAngle + intervalAngle * i;
                 clone.transform.position = transform.position;
+                
                 //clone.transform.position = new Vector2(Mathf.Cos(angle * Mathf.PI / 180.0f), Mathf.Sin(angle * Mathf.PI));
                 clone.transform.rotation = Quaternion.Euler(0, 0, angle);
 

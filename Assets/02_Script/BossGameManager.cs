@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class BossGameManager : MonoBehaviour
 {
+    [SerializeField]
+    AudioSource bossStart;
     public GameObject gamePanel;
     //public GameObject explosion;
     float time = 0f;
@@ -45,6 +47,8 @@ public class BossGameManager : MonoBehaviour
             Panel.color = alpha;
             yield return null;
         }
+        yield return new WaitForSeconds(0.5f);
+        bossStart.Play();
     }
     // Update is called once per frame
     void Update()

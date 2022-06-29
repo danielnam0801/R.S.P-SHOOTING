@@ -24,7 +24,16 @@ public class PositionAutoDestroyer : MonoBehaviour
         if (transform.position.x < stageData.LimitMin.x - destroySize || transform.position.x > stageData.LimitMax.x + destroySize ||
            transform.position.y < stageData.LimitMin.y - destroySize || transform.position.y > stageData.LimitMax.y + destroySize)
         {
-            Destroy(gameObject);
+            if(this.gameObject.layer == 20)
+            {
+                GetComponent<PoolingObj>().PushObj1();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+            
+            //Debug.Log()
         }
     }
 }

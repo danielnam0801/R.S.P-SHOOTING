@@ -19,8 +19,8 @@ public class GameOverDot : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        text = GameObject.Find("Text").GetComponent<Text>();
-        button2 = GameObject.Find("MainMenu").GetComponent<Button>();
+        //text = GameObject.Find("Text").GetComponent<Text>();
+        //button2 = GameObject.Find("MainMenu").GetComponent<Button>();
     }
     void Start()
     {
