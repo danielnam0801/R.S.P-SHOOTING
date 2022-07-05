@@ -50,7 +50,9 @@ public class CountDown : MonoBehaviour
             sec = time % 60;
             if (sec >= 10)
                 countText.text = min.ToString() + " : " + sec.ToString();
-            else if (sec < 10)
+            if (sec < 10 && min >= 1)
+                countText.text = min.ToString() + " : 0" + sec.ToString();
+            else if (sec < 10 && min == 0)
             {
                 countText.color = Color.red;
                 countText.text = min.ToString() + " : 0" + sec.ToString();

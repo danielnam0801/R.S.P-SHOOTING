@@ -27,25 +27,30 @@ public class DotWin : MonoBehaviour
     }
     IEnumerator Dot()
     {
-        text.transform.DORotate(new Vector3(0, 0, 24), 1.5f);
-        text.transform.DOMove(new Vector3(550, 900, 0), 1.5f, true).SetEase(ease);
+        text.transform.DORotate(new Vector3(0, 0, 17), 1.5f);
+        text.transform.DOMove(new Vector3(100, 740, 0), 1.5f, true).SetEase(ease);
         
         
-        yield return new WaitForSeconds(1.5f);
-        text2.transform.DOMove(new Vector3(700, 550, 0), 2f, true).SetEase(ease);
+        yield return new WaitForSeconds(2f);
+        text2.transform.DOMove(new Vector3(700, 700, 0), 2f, true).SetEase(ease);
         yield return new WaitForSeconds(2f);
         text.transform.DORotate(new Vector3(0, 0, 360), 1.5f);
-        text.transform.DOMove(new Vector3(600, 900, 0), 1.5f, true).SetEase(ease);
-        //text.transform.DOMove(new Vector3(900, 950, 0), 1.5f, true);
-        text2.transform.DOMove(new Vector3(600, 600, 0), 2f, true);
-        yield return new WaitForSeconds(1f);
+        //text.transform.DOMove(new Vector3(200, 1050, 0), 2f, true).SetEase(ease);
+        text.transform.DOMove(new Vector3(80, 750, 0), 1.5f, true);
+        text.transform.DOScale(1.4f, 2);
+        text2.transform.DOMove(new Vector3(600, 700, 0), 2f, true);
+        text2.transform.DOScale(1.1f,2);
+        yield return new WaitForSeconds(1.5f);
         textScore.DOFade(0, 0);
         textScore.DOFade(1, 2f);
         textScore.text = "Score : " + PlayerPrefs.GetInt("LastScore");
         
         yield return new WaitForSeconds(1.5f);
         button.transform.DORotate(new Vector3(0, 0, 0), 1.5f);
-        button.transform.DOMove(new Vector3(950, 150, 0), 2f, true).SetEase(ease);
+        button.transform.DOMove(new Vector3(1080, 200, 0), 2f, true).SetEase(ease);
+
+        yield return new WaitForSeconds(3f);
+        textScore.DOFade(0, 2f);    
         
     }
 }

@@ -17,6 +17,9 @@ public class BossGameManager : MonoBehaviour
     void Awake()
     {
         StartCoroutine(Fade());
+        Screen.SetResolution(1920, 1080, true);
+
+
     }
 
     IEnumerator Fade()

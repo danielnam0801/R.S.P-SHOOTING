@@ -38,7 +38,7 @@ public class GameOverDot : MonoBehaviour
         text.DOFade(1, 2f);
         yield return new WaitForSeconds(1.5f);
         button2.transform.DORotate(new Vector3(0, 0, 0), 1.5f);
-        button2.transform.DOMove(new Vector3(950, 200, 0), 2f, true).SetEase(ease);
+        button2.transform.DOMove(new Vector3(1080, 200, 0), 2f, true).SetEase(ease);
 
     }
     // Update is called once per frame

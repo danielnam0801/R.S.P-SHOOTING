@@ -30,6 +30,10 @@ public class GameManager : MonoBehaviour
     Image image;
     Text text;
 
+    public void Awake()
+    {
+        Screen.SetResolution(1920, 1080, true);
+    }
     public void Update()
     {
         

@@ -37,16 +37,16 @@ public class BossWeapon : MonoBehaviour
     IEnumerator Fire()
     {
         float attackRate = 0.7f;
-        int count = 15;
+        int count = 17;
         float intervalAngle = 360 / count;
         float weightAngle = 0;
 
         Debug.Log("wpqkfehlfkds");
 
-        for (int j = 0; j < 7; j++)
+        for (int j = 0; j < 8; j++)
         {
             int rand = Random.Range(-1, 1);
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 17; i++)
             {
                 int ran = Random.Range(0, 3);
                 GameObject clone;
